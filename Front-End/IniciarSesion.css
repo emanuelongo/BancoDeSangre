@@ -80,4 +80,17 @@ header
     margin-bottom:16px ;
     border-radius: 10px;
     color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+/* Animación cuando el botón es tocado (hover) */
+.buttons:hover {
+    background-color: #ba181b; /* Cambia de color cuando el mouse está sobre él */
+    transform: scale(1.1); /* Agranda el botón ligeramente */
+}
+
+/* Animación cuando el botón es presionado (active) */
+.buttons:active {
+    transform: scale(0.95); /* Reduce el tamaño del botón al hacer clic */
 }
