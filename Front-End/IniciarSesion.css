@@ -84,13 +84,11 @@ header
 }
 
 
-/* Animación cuando el botón es tocado (hover) */
 .buttons:hover {
-    background-color: #ba181b; /* Cambia de color cuando el mouse está sobre él */
-    transform: scale(1.1); /* Agranda el botón ligeramente */
+    background-color: #ba181b; 
+    transform: scale(1.1); 
 }
 
-/* Animación cuando el botón es presionado (active) */
 .buttons:active {
-    transform: scale(0.95); /* Reduce el tamaño del botón al hacer clic */
+    transform: scale(0.95); 
 }
