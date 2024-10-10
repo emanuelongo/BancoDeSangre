@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
 
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #BA181B;
+    background-color: #d3d3d3;
 }
 
 .header {
@@ -75,6 +75,7 @@ body {
     display: block;
 }
 
+
 .header .perfil {
     display: flex;
     align-items: center;
@@ -85,49 +86,34 @@ body {
     width: auto;
 }
 
-/*---aca la organización de los hospitales*/
-.container {
-    width: 100%;
-    display: flex;
-    max-width: 2100px;
-}
 
-.card /*targetas*/ {
+.sidebar {
     width: 400px;
-    margin: 30px;
-    margin-top: 40px;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #FFFFFF;
-    box-shadow: 0px 1px 12px rgba(0,0,0,0,2);
-    cursor: default;
-    transition: all 400ms ease;
+    height: calc(100vh - 85px); /* Altura completa menos la altura del navbar */
+    background-color: #d3d3d3;
+    position: fixed;
+    top: 85px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.card:hover {
-    box-shadow: 5px 5px 20px rgba(0,0,0,0,4);
-    transform: translate(3%);
+.image-container img {
+    width: 400px;
+    height: auto;
 }
 
-.card img {
-    width: 100%;
-    height:210px ;
+/* Contenido principal */
+.main-content {
+    margin-left: 600px;
+    color: #BA181B;
+    margin-top: 20px;
 }
 
-.card .contenido {
-    padding: 15px;
-    text-align: center;
-}
-
-.card .contenido p {
-    line-height:1.5 ;
-}
-
-.card .contenido h3 {
-    margin-bottom: 15px;
-}
-
-.card a {
-    color: inherit; 
-    text-decoration: none; 
+.main-content h1 {
+    margin-left: 80px;
+    color: #BA181B;
+    margin-top: 5px;
 }

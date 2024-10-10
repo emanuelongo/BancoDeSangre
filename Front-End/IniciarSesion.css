@@ -71,24 +71,27 @@ header
     font-size: 15px;
 }
 
-.buttons 
-{
+.buttons {
+    display: inline-block;
     width: 100%;
     height: 40px;
     background-color: #ba181b;
     border: none;
-    margin-bottom:16px ;
+    margin-bottom: 16px;
     border-radius: 10px;
     color: #fff;
+    text-align: center;
+    line-height: 40px; 
+    text-decoration: none; 
+    font-size: 20px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-
 .buttons:hover {
-    background-color: #ba181b; 
-    transform: scale(1.1); 
+    background-color: #a31616;
+    transform: scale(1.05);
 }
 
 .buttons:active {
-    transform: scale(0.95); 
+    transform: scale(0.95);
 }
