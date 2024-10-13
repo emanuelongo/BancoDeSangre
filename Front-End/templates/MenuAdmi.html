@@ -9,13 +9,13 @@
 <body>
    <header class="header">
     <div class="logo">
-       <img src="img/BancoSangre.jpeg" alt="logo del sistema" >
+       <img src="{{ url_for('static', filename='img/BancoSangre.jpeg') }}" alt="logo del sistema" >
     </div>
     <nav>
         <ul class="nav-links">
             <li><a href="#">Mis hospitales</a>
                 <ul class="submenu">
-                    <li><a href="CatalogoHospitales.html">Ver hospitales</a></li>
+                    <li><a href="{{ url_for('catalogo_hospitales') }}">Ver hospitales</a></li>
                     <li><a href="#">Gestionar hospitales</a></li>
                 </ul>
             </li>
@@ -30,7 +30,7 @@
         </ul>
     </nav>
     <div class="perfil">
-        <img src="img/perfil.png" alt="perfil administrador" >
+        <img src="{{ url_for('static', filename='img/perfil.png') }}"alt="perfil administrador" >
         <p>administrador</p>
        
      </div>
@@ -38,7 +38,7 @@
 
    <div class="sidebar">
     <div class="image-container">
-        <img src="img/medico.png" alt="Imagen del perfil">
+        <img src="{{ url_for('static', filename='img/medico.png') }}" alt="Imagen del perfil">
     </div>
    </div>
 

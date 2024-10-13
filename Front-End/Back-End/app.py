@@ -35,5 +35,18 @@ def inicio_sesion():
 def menu_admin():
     return render_template("MenuAdmi.html")
 
+
+@app.route('/catalogo_hospitales', methods=['GET'])
+def catalogo_hospitales():
+    return render_template("CatalogoHospitales.html")
+
+
+@app.route('/ver_hospital', methods=['GET'])
+def ver_hospital():
+    return render_template("VerHospital.html") 
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
