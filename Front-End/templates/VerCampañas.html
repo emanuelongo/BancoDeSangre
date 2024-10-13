@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Ver Campañas{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/VerCampañas.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="main-content">
+    <h1>Ver Campañas</h1>
+
+    <div class="container">
+        <div class="campañas">
+            <div class="contenido">
+                <h3>Prospera vida</h3>
+                <p>
+                    fecha: 22 de Octubre
+                 </p>
+                 <p>              
+                    hora
+                 </p>
+                 <p>              
+                     lugar
+                 </p>
+                 <p>              
+                     objetivo
+                 </p>
+                 <p>              
+                     o.o
+                 </p>
+            </div>
+        </div>
+
+        <div class="campañas">
+            <div class="contenido">
+                <h3>Una gota hace la diferencia</h3>
+                <p>
+                   fecha
+                </p>
+                <p>              
+                   hora
+                </p>
+                <p>              
+                    lugar
+                </p>
+                <p>              
+                    objetivo
+                </p>
+                <p>              
+                    o.o
+                </p>
+            </div>
+        </div>
+</div>
+
+
+
+
+{% endblock %}

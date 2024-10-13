@@ -28,6 +28,8 @@ def inicio_sesion():
     else:
         flash("Correo o contraseña incorrectos", "error")
         return redirect(url_for("inicio"))
+    
+    
 
 
 
@@ -44,6 +46,11 @@ def catalogo_hospitales():
 @app.route('/ver_hospital', methods=['GET'])
 def ver_hospital():
     return render_template("VerHospital.html") 
+
+
+@app.route('/ver_campañas', methods=['GET'])
+def ver_campañas():
+    return render_template("VerCampañas.html") 
 
 
 
