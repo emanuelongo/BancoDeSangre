@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar hospital{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<form action ="{{ url_for("agregar_hospital") }}" method="POST" class "form-agregar-hospital">
+    <div class="form-group">
+            <label for="nombre">Nombre del Hospital:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="" required>
+
+            <label for="nombre">Direccion:</label>
+            <input type="text" id="direccion" name="nombre" placeholder="" required>
+
+            <label for="nombre">Contacto:</label>
+            <input type="text" id="contacto" name="nombre" placeholder="" required>
+
+            <label for="nombre">Horario de atencion:</label>
+            <input type="text" id="horario" name="nombre" placeholder="" required>
+
+            <select id="estado" name="tipo_hospital" required>
+                <option value="habilitado">Habilitado</option>
+                <option value="deshabilitado">Deshabilitado</option>
+                
+            </select>
+
+            <button type="submit" Agregar Hospital></button>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

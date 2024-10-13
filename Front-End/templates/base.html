@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Página principal{% endblock %}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+        {% block head %}{% endblock %}
     </head>
     <body>
     <header class="header">
@@ -17,7 +17,7 @@
                 <li><a href="#">Mis hospitales</a>
                     <ul class="submenu">
                         <li><a href="{{ url_for('catalogo_hospitales') }}">Ver hospitales</a></li>
-                        <li><a href="#">Gestionar hospitales</a></li>
+                        <li><a href="{{ url_for('gestionar_hospitales') }}">Gestion de hospitales</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Mis campañas</a>
