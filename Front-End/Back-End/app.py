@@ -63,11 +63,11 @@ hospitales=[]
 @app.route('/agregar_hospital', methods=["GET", "POST"])
 def agregar_hospital():
     if request.method == "POST":
-        Nombre= request.form["nombre"]
-        Direccion= request.form["direccion"]
-        Contacto= request.form["contacto"]
-        Horario= request.form["horario"]
-        Estado= request.form["estado"]
+        nombre = request.form.get('nombre')
+        direccion = request.form.get('direccion')
+        contacto = request.form.get('contacto')
+        horario = request.form.get('horario')
+        estado = request.form.get('estado')
         
         
         nuevo_hodpital={
@@ -75,6 +75,7 @@ def agregar_hospital():
         }
         
         hospitales.append(nuevo_hodpital)
+        print(hospitales) #para probar que si se estan guardando
             
         
     return render_template("AgregarHospital.html") 
