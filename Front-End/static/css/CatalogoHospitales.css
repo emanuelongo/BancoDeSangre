@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 85px;
+    height: 70px;
     padding: 10px 2%;
 }
 
@@ -90,16 +90,17 @@ body {
     width: 100%;
     display: flex;
     max-width: 2100px;
+    padding: 70px;
 }
 
 .card /*targetas*/ {
-    width: 400px;
+    width: 350px;
     margin: 30px;
-    margin-top: 40px;
+    margin-top: 45px;
     border-radius: 10px;
     overflow: hidden;
     background: #FFFFFF;
-    box-shadow: 0px 1px 12px rgba(0,0,0,0,2);
+    box-shadow: 0px 2px 12px rgba(0,0,0,0,2);
     cursor: default;
     transition: all 400ms ease;
 }
