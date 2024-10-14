@@ -3,38 +3,79 @@
 {% block title %}Agregar hospital{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/AgregarHospital.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="form-agregar-hospital">
-    <form action ="{{ url_for("agregar_hospital") }}" method="POST">
-        <div class="form-group">
-                <label for="nombre">Nombre del hospital:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="" required>
+    <form action="{{ url_for('agregar_hospital') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-header">
+            <div class="input-group image-container">
+                <label for="imagen">Imagen del hospital:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*" onchange="previewImage(event)">
+                <div class="image-preview" id="imagePreview">
+                    <img src="" alt="Vista previa de la imagen" class="image-preview__image">
+                    <span class="image-preview__default-text">Vista previa de la imagen</span>
+                </div>
+            </div>
 
-                <label for="nombre">Direccion:</label>
-                <input type="text" id="direccion" name="direccion" placeholder="" required>
+            <!-- Contenedor de campos del formulario -->
+            <div class="form-fields">
+                <div class="input-group">
+                    <label for="nombre">Nombre del hospital:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="" required>
+                </div>
 
-                <label for="nombre">Contacto:</label>
-                <input type="text" id="contacto" name="contacto" placeholder="" required>
+                <div class="input-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="" required>
+                </div>
 
-                <label for="nombre">Horario de atencion:</label>
-                <input type="text" id="horario" name="horario" placeholder="" required>
+                <div class="input-group">
+                    <label for="contacto">Contacto:</label>
+                    <input type="text" id="contacto" name="contacto" placeholder="" required>
+                </div>
 
-                <select id="estado" name="estado" required>
-                    <option value="habilitado">Habilitado</option>
-                    <option value="deshabilitado">Deshabilitado</option>
-                    
-                </select>
+                <div class="input-group">
+                    <label for="horario">Horario de atención:</label>
+                    <input type="text" id="horario" name="horario" placeholder="" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="estado">Estado del hospital:</label>
+                    <select id="estado" name="estado" required>
+                        <option value="habilitado">Habilitado</option>
+                        <option value="deshabilitado">Deshabilitado</option>
+                    </select>
+                </div>
 
                 <button type="submit" class="btn-submit">Agregar Hospital</button>
-            </form>
+            </div>
         </div>
-    </div>
+
+        
+    </form>
 </div>
 
+<script>
+    function previewImage(event) {
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImage = imagePreview.querySelector('.image-preview__image');
+        const defaultText = imagePreview.querySelector('.image-preview__default-text');
 
-
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImage.setAttribute('src', e.target.result);
+                imagePreview.style.display = 'block';
+                defaultText.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewImage.setAttribute('src', '');
+            defaultText.style.display = 'block';
+        }
+    }
+</script>
 {% endblock %}

@@ -97,7 +97,7 @@ body {
 .card /*targetas*/ {
     width: 350px;
     margin: 30px;
-    margin-top: 45px;
+    margin-top: 3px;
     border-radius: 10px;
     overflow: hidden;
     background: #FFFFFF;
