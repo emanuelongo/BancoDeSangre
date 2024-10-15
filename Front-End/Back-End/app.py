@@ -80,8 +80,13 @@ def agregar_hospital():
         
     return render_template("AgregarHospital.html") 
 
+@app.route('/editar_hospital', methods=["GET", "POST"])
+def editar_hospital():
+    return render_template("EditarHospitales.html") 
 
-
+@app.route('/eliminar_hospital', methods=["GET", "POST"])
+def eliminar_hospital():
+    return render_template("EliminarHospitales.html") 
 
 
 if __name__ == "__main__":

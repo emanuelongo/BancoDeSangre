@@ -151,3 +151,155 @@ body {
     text-decoration: none;
     transition: background-color 0.3s ease; 
 }
+
+.btn-delete-hospital1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    left: 320px;
+    top: 150px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 30px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-edit-hospital1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    left: 320px;
+    top:250px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-delete-hospital2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    left: 620px;
+    top: 150px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-edit-hospital2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    left: 620px;
+    top:250px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-delete-hospital3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    right: 365px;
+    top: 150px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-edit-hospital3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    right: 365px;
+    top:250px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-delete-hospital4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    right: 65px;
+    top: 150px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-edit-hospital4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 30px; 
+    width: 60px;
+    height: 60px;
+    right: 65px;
+    top:250px;
+    background-color: #c9ceca; 
+    color: rgb(1, 1, 1); 
+    font-size: 36px; 
+    border-radius: 50%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    transition: background-color 0.3s ease; 
+}
