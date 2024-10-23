@@ -1,0 +1,148 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body{
+    background-image: url("img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.header{
+    padding:20px;
+    border-bottom: 1px solid #666;
+    background-color: #fff !important;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 10px;
+    margin: 0;
+    padding:0;
+}
+.navbar .logo{
+    width: 20vw;
+    object-fit: contain;
+    
+}
+.navbar .admin{
+    display: flex;
+    color:#333 !important;
+    justify-self: space-evenly;
+    align-self:auto;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+.nav-links li{
+    padding: 10px;
+    margin-left: 20px;
+    flex-grow: 1;
+    text-align: center;
+}
+.nav-links a{
+    display: flex;
+    color:#dd2222;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding: 20px 20 px auto;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
+}
+
+.container{
+    display: block;
+    background-color: #fff;
+    color: #333;
+    width: 50vw;
+    height: 100%;
+    text-align: center;
+    margin:0;
+    margin-left: auto;    
+    padding: 20px 20px;
+    border-radius: 0 10px;
+}
+.titulo{
+    display: flex;
+    background-color: #fff;
+    color: #333;
+    width: 50%;
+    height:100%;
+    text-align:center;
+    border-radius: 3px;
+    font-style:sans-serif;
+}
+.caja{
+    flex: 1;
+    background-color: #ccc;
+    border-radius: 10px;
+    height: 100%;
+    padding:2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+.fila{
+    flex:1;
+    font-style: sans-serif;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;   
+}
+.columna{
+    flex: 1;
+}
+.barra{
+    flex: 2;
+    background: #fff;
+    border-radius: 6px;
+    height: 20px;
+    overflow: hidden;
+}
+.progreso{
+    height: 100%;
+    background: #dd2222;
+    border-radius: 6px;
+}
+.fecha{
+    flex: 1;
+    padding: 1px;
+    margin: auto;
+}
+.porcentaje{
+    flex: 1;
+}
+.alerta{
+    color: #333;
+    background: #dd2222;
+    border-radius: 5px;
+}
+.crear{         /*Boton*/
+    background-color: #dd2222;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 40%;
+    margin-top: 2rem;
+    transition: background-color 0.2s;
+}
+
+
