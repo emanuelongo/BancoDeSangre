@@ -40,6 +40,7 @@ num_hospital=0
 #los hospitales se agregan en una lista hospitales
 hospitales=[] 
 
+
 hospital1 = {   
     "id": num_hospital,
     "Nombre": "Hospital General de Medellín",
@@ -57,7 +58,6 @@ hospitales.append(hospital1)
 def agregar_hospital():
     global num_hospital
     
-    
         
     if request.method == "POST": #cuando se pulsa el boton de agregar hospital
         
@@ -71,9 +71,10 @@ def agregar_hospital():
         nuevo_hospital={
             "id": num_hospital, "Nombre": nombre, "Direccion": direccion, "Contacto": contacto, "Horario": horario, "Estado": estado
         }
-        
         hospitales.append(nuevo_hospital)
         num_hospital += 1
+        
+        
         
         print(hospitales) #para probar que si se estan guardando   
     return render_template("AgregarHospital.html") 
@@ -83,14 +84,14 @@ def agregar_hospital():
 def ver_hospital2(hospital_id):
     # Buscar el hospital correspondiente por id
     hospital = None  
-    for h in hospitales:
-        if h['id'] == hospital_id:
-            hospital = h  # Asigna el hospital encontrado
+    for hospital in hospitales:
+        if hospital['id'] == hospital_id:
+            hospital_encontrado = hospital  # Asigna el hospital encontrado
 
     if hospital is None:
         return "Hospital no encontrado", 404  # Manejar caso en que no se encuentra el hospital
 
-    return render_template("verhospital2.html", hospital=hospital)
+    return render_template("verhospital2.html", hospital=hospital_encontrado)
 
 
 
@@ -102,10 +103,9 @@ def ver_hospital():
 
 
 
-
 @app.route('/gestionar_hospitales', methods=["GET", "POST"])
 def gestionar_hospitales():
-    return render_template("GestionHospitales.html", hospitales =  hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
+    return render_template("GestionHospitales.html", hospitales = hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
 
 
 
@@ -114,12 +114,27 @@ def catalogo_hospitales():
     return render_template("CatalogoHospitales.html", hospitales= hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
 
 
-@app.route('/editar_hospital', methods=["GET", "POST"])
-def editar_hospital():
-    if request.method == "POST":
-        pass
+
+@app.route('/editar_hospital/<int:hospital_id>', methods=["GET", "POST"])
+
+def editar_hospital(hospital_id):
+    hospital_a_editar = None  
     
-    return render_template("EditarHospitales.html") 
+    for hospital in hospitales:
+        if hospital['id'] == hospital_id:
+            hospital_a_editar = hospital 
+            
+    if hospital_a_editar is None:
+        return "Hospital no encontrado", 404 
+
+    if request.method == "POST":
+        hospital_a_editar["Nombre"]= request.form.get("nombre")
+        hospital_a_editar["Direccion"]= request.form.get("direccion")
+        hospital_a_editar["Contacto"]= request.form.get("contacto")
+        hospital_a_editar["Horario"]= request.form.get("horario")
+
+    
+    return render_template("EditarHospitales.html", hospital= hospital_a_editar) 
 
 
 
