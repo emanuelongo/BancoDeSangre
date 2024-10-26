@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Hospitales{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/VerHospital.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="sidebar">
+  <div class="image-container">
+      <img src="{{ url_for('static', filename='img/Hospital2.jpg') }}" alt="Imagen del perfil">
+  </div>
+ </div>
+
+<div class="main-content">
+    <h1>{{hospital.Nombre}}</h1> <br>
+     <h2>Dirección:  </h2> <p>{{hospital.Direccion}}</p>
+     <h2>Contacto:  </h2> <p>{{hospital.Contacto}}</p>
+     <h2>Horario de atención:  </h2> <p>{{hospital.Horario}}</p>
+     <h2>Estado:  </h2> <p>{{hospital.Estado}}</p> <br>
+
+     <a href="" class="buttons">Ver disponibilidad de sangre</a>
+   </div>
+{% endblock %}
+    
