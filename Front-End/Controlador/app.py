@@ -83,12 +83,12 @@ def agregar_hospital():
 @app.route('/ver_hospital2/<int:hospital_id>', methods=["GET"])
 def ver_hospital2(hospital_id):
     # Buscar el hospital correspondiente por id
-    hospital = None  
+    hospital_encontrado = None  
     for hospital in hospitales:
         if hospital['id'] == hospital_id:
             hospital_encontrado = hospital  # Asigna el hospital encontrado
 
-    if hospital is None:
+    if hospital_encontrado is None:
         return "Hospital no encontrado", 404  # Manejar caso en que no se encuentra el hospital
 
     return render_template("verhospital2.html", hospital=hospital_encontrado)
@@ -105,7 +105,7 @@ def ver_hospital():
 
 @app.route('/gestionar_hospitales', methods=["GET", "POST"])
 def gestionar_hospitales():
-    return render_template("GestionHospitales.html", hospitales = hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
+    return render_template("GestionHospitales.html", hospitales =  hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
 
 
 
@@ -115,26 +115,29 @@ def catalogo_hospitales():
 
 
 
-@app.route('/editar_hospital/<int:hospital_id>', methods=["GET", "POST"])
-
-def editar_hospital(hospital_id):
+@app.route('/editar_hospital', methods=["GET", "POST"])
+def editar_hospital():
     hospital_a_editar = None  
     
-    for hospital in hospitales:
-        if hospital['id'] == hospital_id:
-            hospital_a_editar = hospital 
-            
-    if hospital_a_editar is None:
-        return "Hospital no encontrado", 404 
+    #for hospital in hospitales:
+        #print(f"intentando editar hospital con id: {hospital_id}") 
 
-    if request.method == "POST":
-        hospital_a_editar["Nombre"]= request.form.get("nombre")
-        hospital_a_editar["Direccion"]= request.form.get("direccion")
-        hospital_a_editar["Contacto"]= request.form.get("contacto")
-        hospital_a_editar["Horario"]= request.form.get("horario")
+        #if hospital['id'] == hospital_id:
+            #hospital_a_editar = hospital 
+            
+    #print(hospital_a_editar.nombre)
+            
+    #if hospital_a_editar is None:
+        #return "Hospital no encontrado", 404 
+
+    #if request.method == "POST":
+        #hospital_a_editar["Nombre"]= request.form.get("nombre")
+        #hospital_a_editar["Direccion"]= request.form.get("direccion")
+        #hospital_a_editar["Contacto"]= request.form.get("contacto")
+        #hospital_a_editar["Horario"]= request.form.get("horario")
 
     
-    return render_template("EditarHospitales.html", hospital= hospital_a_editar) 
+    return render_template("EditarHospitales.html")#, hospital= hospital_a_editar ) 
 
 
 

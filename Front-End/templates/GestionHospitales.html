@@ -29,12 +29,16 @@
                 </div>
             </a>
         </div>
+        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital1">
+            ✏️
+        </a>
+
         {% endfor %}
 
         <a href="{{ url_for('eliminar_hospital') }}" class="btn-delete-hospital1">
             ❌
         </a>
-        <a href="{{ url_for('editar_hospital'), hospital_id= hospital.id }}" class="btn-edit-hospital1">
+        <a href="{{ url_for('editar_hospital')}}"  class="btn-edit-hospital1">
             ✏️
         </a>
 
