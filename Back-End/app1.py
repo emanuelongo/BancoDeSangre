@@ -15,12 +15,13 @@ def registrar():
     tipo_usuario = request.form['tipo_usuario']
     nombre = request.form['nombre']
     tipo_documento = request.form['tipo_documento']
+    numero_documento = request.form['numero_documento']
     fecha_nacimiento = request.form['fecha_nacimiento']
     email = request.form['email']
     password = request.form['password']
     
     # Llama a la función de inserción
-    exito, mensaje = insertar_usuario(tipo_usuario, nombre, tipo_documento, fecha_nacimiento, email, password)
+    exito, mensaje = insertar_usuario(tipo_usuario, nombre, tipo_documento, numero_documento, fecha_nacimiento, email, password)
     
     # Devuelve mensaje de éxito o error
     if exito:

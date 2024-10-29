@@ -25,13 +25,13 @@ body
     background-attachment: fixed;    
 }
 
-header 
-{
+.header {
+    background-color: #FFFFFF;
     display: flex;
-    height: 50px;
     justify-content: space-between;
     align-items: center;
-    margin: 25px;
+    height: 85px;
+    padding: 10px 2%;
 }
 
 .logo

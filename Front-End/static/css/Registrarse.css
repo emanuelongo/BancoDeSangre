@@ -1,23 +1,49 @@
-/* Estilo general */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #BA181B; 
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center; /* Cambiado a center para centrar el contenedor */
+    height: 100vh; 
+}
+
+/* Estilos del header */
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: flex-start; 
     align-items: center;
-    height: 100vh;
+    height: 70px; 
+    padding: 0 2%; 
+    width: 100%; 
+}
+
+/* Estilos del logo */
+.header .logo img {
+    height: 50px; 
+    width: auto; 
 }
 
 /* Contenedor principal del formulario */
 .registro-container {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px; /* Aumenta el padding para un espacio más cómodo */
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    width: 900px; 
+    max-width: 90%; 
+    margin: 20px 2%; /* Aumenta el margen superior para mejor espaciado */
 }
 
 /* Encabezado del formulario */
@@ -25,6 +51,7 @@ h2 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+    font-size: 24px; /* Aumenta el tamaño de la fuente del encabezado */
 }
 
 /* Etiquetas de los campos */
@@ -33,6 +60,7 @@ label {
     margin-bottom: 5px;
     font-weight: bold;
     color: #555;
+    font-size: 14px;
 }
 
 /* Campos de entrada */
@@ -42,12 +70,13 @@ input[type="date"],
 input[type="password"],
 select {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 10px; /* Aumenta ligeramente el padding */
+    margin-bottom: 15px; 
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px; /* Borde ligeramente más redondeado */
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 14px; 
+    transition: background-color 0.3s ease; /* Transición para el fondo */
 }
 
 /* Efecto al enfocar los campos de entrada */
@@ -56,32 +85,26 @@ input[type="email"]:focus,
 input[type="date"]:focus,
 input[type="password"]:focus,
 select:focus {
-    border-color: #007BFF;
+    border-color: #BA181B;
     outline: none;
+    background-color: #f8d7da; /* Fondo sutil al enfocar */
 }
 
 /* Botón de registro */
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
+    padding: 12px; /* Aumenta el padding del botón */
+    background-color: #BA181B;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px; /* Borde ligeramente más redondeado */
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s; /* Añade efecto de transformación */
 }
 
 /* Efecto al pasar el cursor sobre el botón */
 button:hover {
-    background-color: #0056b3;
-}
-
-
-@media (max-width: 400px) {
-    .registro-container {
-        width: 100%;
-        padding: 15px;
-    }
+    background-color: #9E1417; /* Color más claro en hover */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
 }

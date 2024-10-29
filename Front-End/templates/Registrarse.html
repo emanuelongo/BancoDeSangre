@@ -7,6 +7,13 @@
     <title>Registrarse</title>
 
 </head>
+
+    <header class="header">
+        <div class="logo">
+           <img src="{{ url_for('static', filename='img/BancoSangre.jpeg') }}" alt="logo del sistema" >
+        </div>
+    </header>
+
 <div class="registro-container">
     <h2>Registro de Usuario</h2>
     <form id="registroForm" method="POST" action="/registrar">
@@ -16,14 +23,17 @@
             <option value="solicitante">Solicitante</option>
         </select>
 
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
 
         <label for="tipo_documento">Tipo de Documento</label>
         <select id="tipo_documento" name="tipo_documento" required>
             <option value="cc">Cédula de Ciudadanía</option>
             <option value="ce">Cédula de Extranjería</option>
         </select>
+
+        <label for="numero_documento">Numero de Documento</label>
+        <input type="text" id="numero_documento" name="numero_documento" required>
 
         <label for="fecha_nacimiento">Fecha de Nacimiento</label>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
