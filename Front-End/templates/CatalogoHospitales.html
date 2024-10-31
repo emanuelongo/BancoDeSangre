@@ -9,22 +9,29 @@
 
 {% block content %}
 
+
+
+
  <!-- TODO LO DE LAS TARGETAS DE LOS HOSPITALES -->
-   <div class="container">
-        <div class="card">
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Hospital General de Medellín</h3>
-                <p>
-                   Cra. 48 #32-102 
-                </p>
-                <p>              
-                   La Candelaria, Medellin
-                </p>
+ <div class="container">
+        {% if hospitales %}
+            {% for hospital in hospitales %}
+            <div class="card">
+                <a href="{{ url_for('ver_hospital2', hospital_id = hospital.id) }}">
+                    <figure>
+                        <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}">
+                    </figure>
+                    <div class="contenido">
+                        <h3>{{ hospital.Nombre }}</h3>
+                        <p>{{ hospital.Direccion }}</p>
+                        <p>{{ hospital.Contacto }}</p>
+                    </div>
+                </a>
             </div>
-        </div>
+            {% endfor %}
+        {% endif %}
+
+    
 
         <div class="card">
             <a href="{{ url_for('ver_hospital') }}"><!-- Cambia "verHospital.html" a la ruta correcta -->

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Campaña{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="form-agregar-campana">
+    <form action="{{ url_for('agregar_campaña') }}" method="POST">
+        <div class="form-header">
+            <h2>Agregar Nueva Campaña</h2>
+
+            <div class="form-fields">
+
+                
+                <div class="input-group">
+                    <label for="nombre_campaña">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                </div>
+
+
+                <div class="input-group">
+                    <label for="nombre_campaña">Nombre de la campaña:</label>
+                    <input type="text" id="nombre_campaña" name="nombre_campaña" placeholder="Nombre de la campaña" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="cantidad_donantes">Cantidad de donantes requerida:</label>
+                    <input type="number" id="cantidad_donantes" name="cantidad_donantes" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="objetivo">Objetivo de la campaña:</label>
+                    <textarea id="objetivo" name="objetivo" rows="3" placeholder="Objetivo de la campaña" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="contacto">Información de contacto:</label>
+                    <input type="text" id="contacto" name="contacto" placeholder="Contacto" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="fecha">Fecha de la campaña:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="direccion">Dirección del evento:</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="horario">Horario del evento:</label>
+                    <input type="text" id="horario" name="horario" placeholder="Horario" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Agregar Campaña</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

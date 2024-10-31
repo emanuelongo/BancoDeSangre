@@ -11,25 +11,34 @@
 
  <!-- TODO LO DE LAS TARGETAS DE LOS HOSPITALES -->
    <div class="container">
+        {% for hospital in hospitales %}
         <div class="card">
+            <a href="{{ url_for('ver_hospital') }}">
             <figure>
                 <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Hospital General de Medellín</h3>
-                <p>
-                   Cra. 48 #32-102 
-                </p>
-                <p>              
-                   La Candelaria, Medellin
-                </p>
-            </div>
+                </figure>
+                <div class= "contenido">
+                    <h3>{{ hospital.Nombre }}</h3>
+                    <p>
+                        {{ hospital.Direccion }}
+                    </p>
+                    <p>
+                        {{ hospital.Contacto }}
+                    </p>
+                    
+                </div>
+            </a>
         </div>
+        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital1">
+            ✏️
+        </a>
+
+        {% endfor %}
 
         <a href="{{ url_for('eliminar_hospital') }}" class="btn-delete-hospital1">
             ❌
         </a>
-        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital1">
+        <a href="{{ url_for('editar_hospital')}}"  class="btn-edit-hospital1">
             ✏️
         </a>
 
