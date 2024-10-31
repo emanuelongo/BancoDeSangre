@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar campaña{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/EliminarHospital.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="form-eliminar-hospital">
+    <form action="{{ url_for('eliminar_campañas') }}" enctype="multipart/form-data">
+        <div class="form-header">
+
+            <!-- Contenedor de campos del formulario -->
+            <div class="form-fields">
+                <div class="input-group">
+                    <label for="nombre">¿Está seguro de que desea eliminar la campaña?:</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Sí</button>
+                <button type="submit" class="btn-submit">No</button>
+            </div>
+        </div>
+
+        
+    </form>
+</div>
+{% endblock %}
