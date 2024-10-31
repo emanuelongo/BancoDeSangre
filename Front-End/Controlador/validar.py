@@ -3,7 +3,7 @@ from psycopg2 import sql
 
 def validar_usuario(email, password):
     try:
-        # Crea una conexión
+        # Crea una conexión a la base de datos
         conn = obtener_conexion()
         with conn.cursor() as cur:
             # Consulta el usuario por su correo electrónico
@@ -17,6 +17,7 @@ def validar_usuario(email, password):
         if resultado is None:
             return False, "Usuario no encontrado." 
         
+        # Compara la contraseña proporcionada con la almacenada en la base de datos
         if resultado[0] == password:
             return True, "Inicio de sesión exitoso."
         else:

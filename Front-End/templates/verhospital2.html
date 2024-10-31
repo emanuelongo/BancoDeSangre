@@ -24,7 +24,7 @@
      <h2>Horario de atención:  </h2> <p>{{hospital.Horario}}</p>
      <h2>Estado:  </h2> <p>{{hospital.Estado}}</p> <br>
 
-     <a href="" class="buttons">Ver disponibilidad de sangre</a>
+     <a href="{{ url_for('ver_disponibilidad') }}" class="buttons">Ver disponibilidad de sangre</a>
    </div>
 {% endblock %}
     
