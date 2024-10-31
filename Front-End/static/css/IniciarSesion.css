@@ -118,3 +118,23 @@ body
     text-align: center; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
+
+.form-login p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555; /* Color del texto */
+}
+
+.form-login p a {
+    color: #ba181b; /* Color del enlace */
+    font-weight: bold;
+    text-decoration: none; /* Quitar subrayado */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+.form-login p a:hover {
+    color: #0056b3; /* Color al pasar el mouse */
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
