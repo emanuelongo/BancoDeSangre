@@ -150,6 +150,17 @@ def ver_campañas():
 def gestionar_campañas():
     return render_template("GestionCampañas.html") 
 
+@app.route('/eliminar_campañas', methods=["GET"])
+def eliminar_campañas():
+    return render_template("EliminarCampañas.html")
+
+@app.route('/editar_campañas', methods=["GET"])
+def editar_campañas():
+    return render_template("EditarCampañas.html")
+
+@app.route('/ver_disponibilidad', methods=["GET"])
+def ver_disponibilidad():
+    return render_template("Disponibilidad.html")
 
 @app.route('/agregar_campaña', methods=["GET", "POST"])
 def agregar_campaña():
