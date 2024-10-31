@@ -8,11 +8,9 @@ app.secret_key = 'clave'
 
 
 
-
 @app.route("/")
 def inicio():
     return render_template("IniciarSesion.html")
-
 
 
 @app.route("/inicioSesion", methods=["POST"])

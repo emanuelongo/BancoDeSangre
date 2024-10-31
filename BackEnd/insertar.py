@@ -21,28 +21,3 @@ def insertar_usuario(tipo_usuario, nombre, tipo_documento, numero_documento, fec
     finally:
         conn.close()
 
-    
-def crear_camapaña(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario):
-    conn = None
-    
-    try:
-        conn = obtener_conexion()
-        
-        with conn.cursor() as cur:
-            cur.execute(
-                sql.SQL("""
-                    INSERT INTO campañas (nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
-                """),
-                (nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario)
-            )
-            
-            conn.commit() 
-            print("Campaña insertada exitosamente.")
-            
-            
-    except Exception as e:
-        print(f"Error al insertar la campaña: {e}")
-    finally:
-        if conn:
-            conn.close()  
