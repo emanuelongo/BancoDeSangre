@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+import psycopg2
+from insertar2 import crear_campana  
 
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
 app.secret_key = 'clave'
+
+
 
 
 @app.route("/")
@@ -76,7 +80,7 @@ def agregar_hospital():
         
         
         
-        print(hospitales) #para probar que si se estan guardando   
+        print(hospitales)  
     return render_template("AgregarHospital.html") 
 
 
@@ -86,14 +90,12 @@ def ver_hospital2(hospital_id):
     hospital_encontrado = None  
     for hospital in hospitales:
         if hospital['id'] == hospital_id:
-            hospital_encontrado = hospital  # Asigna el hospital encontrado
+            hospital_encontrado = hospital  
 
     if hospital_encontrado is None:
-        return "Hospital no encontrado", 404  # Manejar caso en que no se encuentra el hospital
+        return "Hospital no encontrado", 404  
 
     return render_template("verhospital2.html", hospital=hospital_encontrado)
-
-
 
 
 @app.route('/ver_hospital', methods=["GET"])
@@ -101,18 +103,14 @@ def ver_hospital():
     return render_template("VerHospital.html")
 
 
-
-
 @app.route('/gestionar_hospitales', methods=["GET", "POST"])
 def gestionar_hospitales():
-    return render_template("GestionHospitales.html", hospitales =  hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
-
+    return render_template("GestionHospitales.html", hospitales =  hospitales) 
 
 
 @app.route('/catalogo_hospitales', methods=["GET"])
 def catalogo_hospitales():
-    return render_template("CatalogoHospitales.html", hospitales= hospitales) #se pasa la lista de hospitales para iterar y mostrarlos
-
+    return render_template("CatalogoHospitales.html", hospitales= hospitales)
 
 
 @app.route('/editar_hospital', methods=["GET", "POST"])
@@ -140,7 +138,6 @@ def editar_hospital():
     return render_template("EditarHospitales.html")#, hospital= hospital_a_editar ) 
 
 
-
 @app.route('/eliminar_hospital', methods=["GET", "POST"])
 def eliminar_hospital():
     return render_template("EliminarHospitales.html") 
@@ -149,6 +146,30 @@ def eliminar_hospital():
 def ver_campañas():
     return render_template("VerCampañas.html") 
 
+
+
+@app.route('/gestionar_campañas', methods=["GET"])
+def gestionar_campañas():
+    return render_template("GestionCampañas.html") 
+
+
+@app.route('/agregar_campaña', methods=["GET", "POST"])
+def agregar_campaña():
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        nombre_campaña = request.form.get('nombre_campaña')
+        cantidad_donantes = request.form.get('cantidad_donantes')
+        objetivo = request.form.get('objetivo')
+        contacto = request.form.get('contacto')
+        fecha = request.form.get('fecha')
+        direccion = request.form.get('direccion')
+        horario = request.form.get('horario')
+        
+        crear_campana(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario)
+        
+        return redirect(url_for('gestionar_campañas'))  
+  
+    return render_template("AgregarCampaña.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
