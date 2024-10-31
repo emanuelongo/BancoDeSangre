@@ -2,8 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import psycopg2
 from insertar2 import crear_campana  
 from insertar import insertar_usuario
-
-
+from validar import validar_usuario
 
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
@@ -15,7 +14,6 @@ app.secret_key = 'clave'
 def inicio():
     return render_template("IniciarSesion.html")
 
-
 @app.route("/inicioSesion", methods=["POST"])
 def inicio_sesion():    
     correo = request.form.get("correo")
@@ -26,19 +24,25 @@ def inicio_sesion():
         flash("Faltan campos por completar", "error")
         return redirect(url_for("inicio"))
     
-
-    if correo== "admin@lifeline.com" and contraseña== "123":
-        return redirect(url_for("menu_admin"))
+    # Verificar si el correo es del administrador
+    if correo.lower() == "admin@lifeline.com" and contraseña == "123":
+        return redirect(url_for("menu_admin"))  
     
+    # Para otros usuarios
+    exito, mensaje = validar_usuario(correo, contraseña)
+    
+    if exito:
+            return "¡BIENVENIDO!"
     else:
-        flash("Correo o contraseña incorrectos", "error")
-        return redirect(url_for("inicio"))
-    
-    
+            return f"Error en el registro: {mensaje}"
 
 @app.route('/menu_admin')
 def menu_admin():
     return render_template("MenuAdmi.html")
+
+@app.route('/menu_usuario')
+def menu_usuario():
+    return render_template("MenuUsuario.html") 
 
 num_hospital=0
 
