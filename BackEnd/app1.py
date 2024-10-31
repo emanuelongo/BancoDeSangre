@@ -28,6 +28,12 @@ def registrar():
         return "¡Registro exitoso!"
     else:
         return f"Error en el registro: {mensaje}"
+    
+
+
+    
+    
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

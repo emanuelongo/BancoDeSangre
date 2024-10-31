@@ -15,7 +15,7 @@ def validar_usuario(email, password):
         
         # Si no se encontró el usuario
         if resultado is None:
-            return False, "Usuario no encontrado."
+            return False, "Usuario no encontrado." 
         
         if resultado[0] == password:
             return True, "Inicio de sesión exitoso."

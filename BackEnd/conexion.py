@@ -6,7 +6,7 @@ def obtener_conexion():
     return psycopg2.connect(
         dbname="LifeLine",
         user="postgres",
-        password="lucas",
+        password="a",
         host="localhost",
         port="5432"
     )

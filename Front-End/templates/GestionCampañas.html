@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Gestionar Campañas{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="gestionar-campanas">
+    <h2>Gestión de Campañas</h2>
+
+    <div class="button-container">
+        <a href="{{ url_for('agregar_campaña') }}" class="btn-agregar">Agregar Campaña</a>
+    </div>
+</div>
+{% endblock %}
