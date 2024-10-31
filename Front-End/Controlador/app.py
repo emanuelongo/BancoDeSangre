@@ -3,6 +3,7 @@ import psycopg2
 from insertar2 import crear_campana  
 from insertar import insertar_usuario
 from validar import validar_usuario
+from hospital import crear_hospital, obtener_hospitales
 
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
@@ -60,47 +61,39 @@ hospital1 = {
 }
 
     
-hospitales.append(hospital1)
-
-
 @app.route('/agregar_hospital', methods=["GET", "POST"])
-def agregar_hospital():
-    global num_hospital
-    
-        
-    if request.method == "POST": #cuando se pulsa el boton de agregar hospital
-        
+def agregar_hospital_route():
+    if request.method == "POST":
         nombre = request.form.get('nombre')
         direccion = request.form.get('direccion')
         contacto = request.form.get('contacto')
         horario = request.form.get('horario')
         estado = request.form.get('estado')
         
+        exito, mensaje = crear_hospital(nombre, direccion, contacto, horario, estado)
         
-        nuevo_hospital={
-            "id": num_hospital, "Nombre": nombre, "Direccion": direccion, "Contacto": contacto, "Horario": horario, "Estado": estado
-        }
-        hospitales.append(nuevo_hospital)
-        num_hospital += 1
+        if exito:
+            flash(mensaje, "success")
+        else:
+            flash(mensaje, "error")
         
-        
-        
-        print(hospitales)  
+        return redirect(url_for("gestionar_hospitales"))  # Redirige a la página de gestión de hospitales
+
     return render_template("AgregarHospital.html") 
 
+@app.route('/agregar_hospital')
+def agregar_hospital():
+    return render_template("AgregarHospital.html")
+ # Muestra el formulario de agregar hospital
 
-@app.route('/ver_hospital2/<int:hospital_id>', methods=["GET"])
-def ver_hospital2(hospital_id):
-    # Buscar el hospital correspondiente por id
-    hospital_encontrado = None  
-    for hospital in hospitales:
-        if hospital['id'] == hospital_id:
-            hospital_encontrado = hospital  
+@app.route('/catalogo_hospitales')
+def catalogo_hospitales():
+    hospitales = obtener_hospitales()  # Obtiene la lista de hospitales
+    return render_template('CatalogoHospitales.html', hospitales=hospitales)  # Asegúrate de que el nombre de la plantilla sea correcto
 
-    if hospital_encontrado is None:
-        return "Hospital no encontrado", 404  
+ 
 
-    return render_template("verhospital2.html", hospital=hospital_encontrado)
+
 
 
 @app.route('/ver_hospital', methods=["GET"])
@@ -112,10 +105,6 @@ def ver_hospital():
 def gestionar_hospitales():
     return render_template("GestionHospitales.html", hospitales =  hospitales) 
 
-
-@app.route('/catalogo_hospitales', methods=["GET"])
-def catalogo_hospitales():
-    return render_template("CatalogoHospitales.html", hospitales= hospitales)
 
 
 @app.route('/editar_hospital', methods=["GET", "POST"])

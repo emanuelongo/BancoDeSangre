@@ -4,107 +4,27 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
-
 {% endblock %}
 
 {% block content %}
-
-
-
-
- <!-- TODO LO DE LAS TARGETAS DE LOS HOSPITALES -->
- <div class="container">
-        {% if hospitales %}
-            {% for hospital in hospitales %}
-            <div class="card">
-                <a href="{{ url_for('ver_hospital2', hospital_id = hospital.id) }}">
-                    <figure>
-                        <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}">
-                    </figure>
-                    <div class="contenido">
-                        <h3>{{ hospital.Nombre }}</h3>
-                        <p>{{ hospital.Direccion }}</p>
-                        <p>{{ hospital.Contacto }}</p>
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-        {% endif %}
-
-    
-
+<div class="container">
+    {% if hospitales %}
+        {% for hospital in hospitales %}
         <div class="card">
-            <a href="{{ url_for('ver_hospital') }}"><!-- Cambia "verHospital.html" a la ruta correcta -->
+            <a href="{{ url_for('ver_hospital', hospital_id=hospital[1]) }}"> <!-- Usa el ID del hospital -->
                 <figure>
-                    <img src="{{ url_for('static', filename='img/Hospital2.jpg') }}" alt="Clínica Medellín Sede Occidente">
+                    <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" alt="{{ hospital[1] }}">
                 </figure>
                 <div class="contenido">
-                    <h3>Clínica Medellín Sede Occidente</h3>
-                    <p>
-                       Cra. 65B #30-95
-                    </p>
-                    <p>              
-                        Medellín, Belén
-                    </p>
+                    <h3>{{ hospital[1] }}</h3> <!-- Nombre del hospital -->
+                    <p>{{ hospital[2] }}</p> <!-- Dirección del hospital -->
+                    <p>{{ hospital[3] }}</p> <!-- Contacto del hospital -->
                 </div>
             </a>
         </div>
-        
-
-        <div class="card">
-            
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital3.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Clínica Las Américas Auna</h3>
-                <p>
-                   Cra. 75B #2A-80 
-                </p>
-                <p>              
-                    MedellÍn, Belén
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital4.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Hospital Pablo Tobón Uribe</h3>
-                <p>
-                   Cra. 75B #69-240 
-                </p>
-                <p>              
-                    Medellin
-                </p>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-   </div>
-
+        {% endfor %}
+    {% else %}
+        <p>No hay hospitales disponibles.</p> <!-- Mensaje si no hay hospitales -->
+    {% endif %}
+</div>
 {% endblock %}
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
