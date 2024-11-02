@@ -3,7 +3,7 @@ import psycopg2
 from insertar2 import crear_campana  
 from insertar import insertar_usuario
 from validar import validar_usuario
-from hospital import crear_hospital, obtener_hospitales
+from hospital import crear_hospital, obtener_hospitales, actualizar_hospital, obtener_hospital_por_id
 
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
@@ -91,7 +91,28 @@ def catalogo_hospitales():
     hospitales = obtener_hospitales()  # Obtiene la lista de hospitales
     return render_template('CatalogoHospitales.html', hospitales=hospitales)  # Asegúrate de que el nombre de la plantilla sea correcto
 
- 
+@app.route('/editar_hospital/<int:hospital_id>', methods=["GET", "POST"])
+def editar_hospital_route(hospital_id):
+    if request.method == "POST":
+        nombre = request.form.get('nombre')
+        direccion = request.form.get('direccion')
+        contacto = request.form.get('contacto')
+        horario = request.form.get('horario')
+        estado = request.form.get('estado') 
+
+        exito, mensaje = actualizar_hospital(hospital_id, nombre, direccion, contacto, horario, estado)
+
+        if exito:
+            flash(mensaje, "success")
+        else:
+            flash(mensaje, "error")
+
+        return redirect(url_for("gestionar_hospitales"))  # Redirige a la página de gestión de hospitales
+
+    # Para solicitudes GET, obtenemos los datos actuales del hospital
+    hospital = obtener_hospital_por_id(hospital_id)
+    return render_template("EditarHospital.html", hospital=hospital)
+
 
 
 
