@@ -3,17 +3,17 @@
 {% block title %}Agregar Campaña{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/AgregarCampañas.css') }}">
 {% endblock %}
 
 {% block content %}
+<h2>Agregar Nueva Campaña</h2>
 <div class="form-agregar-campana">
     <form action="{{ url_for('agregar_campaña') }}" method="POST">
         <div class="form-header">
-            <h2>Agregar Nueva Campaña</h2>
+            
 
             <div class="form-fields">
-
                 
                 <div class="input-group">
                     <label for="nombre_campaña">Nombre:</label>

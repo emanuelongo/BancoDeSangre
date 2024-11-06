@@ -9,144 +9,59 @@
 
 {% block content %}
 
-<div class="container">
-    <h1> Campañas Activas</h1>
-    <div class="campañas">
-        <div class="contenido">
-            <h3>Prospera vida</h3>
-            <p>
-                <span class="rojo">fecha:</span> <span class="negro">22 de Octubre</span>
-            </p>
-            <p>
-                <span class="rojo">hora:</span> <span class="negro">8:30 am / 2:30 pm</span>
-            </p>
-            <p>
-                <span class="rojo">lugar:</span> <span class="negro">hospital del carmen</span>
-            </p>
-            <p>
-                <span class="rojo">donantes:</span> <span class="negro">0/45</span>
-            </p>
-            <br>
-            <p>
-                <span class="negro">Lo que a ti te sobra a mi me falta</span>
-            </p>
+
+<div class="main-content">
+    <h1>Campañas Activas</h1>
+    <div class="container">
+        {% for campaña in campañas %}
+        <div class="campañas">
+            <div class="contenido">
+                <a href="{{ url_for('ver_campañas', id=campaña[0]) }}">
+                    <figure>
+                        <img src="{{ url_for('static', filename='img/campaña.jpg') }}" alt="{{ campaña.nombre }}">
+                    </figure>
+                    <div class="contenido">
+                        <h3 class="rojo">{{ campaña[2] }}</h3>
+                        <p class="negro"><strong>Fecha:</strong> {{ campaña[6] }}</p>
+                        <p class="negro"><strong>Hora:</strong> {{ campaña[8] }}</p>
+                        <p class="negro"><strong>Lugar:</strong> {{ campaña[7] }}</p>
+                        <p class="negro"><strong>Donantes:</strong> {{ campaña[8] }}/{{ campaña[3] }}</p>
+                        <br>
+                        <p class="negro"><em>{{ campaña[1] }}</em></p>
+                    </div>
+                </a>
+            </div>
         </div>
+        {% endfor %}
     </div>
 
-        <div class="campañas">
-            <div class="contenido">
-            <h3>Prospera vida</h3>
-            <p>
-                <span class="rojo">fecha:</span> <span class="negro">22 de Octubre</span>
-            </p>
-            <p>
-                <span class="rojo">hora:</span> <span class="negro">8:30 am / 2:30 pm</span>
-            </p>
-            <p>
-                <span class="rojo">lugar:</span> <span class="negro">hospital del carmen</span>
-            </p>
-            <p>
-                <span class="rojo">donantes:</span> <span class="negro">0/45</span>
-            </p>
-            <br>
-            <p>
-                <span class="negro">Lo que a ti te sobra a mi me falta</span>
-            </p>
-            </div>
-        </div>
-
-        <div class="campañas">
-            <div class="contenido">
-                <h3>Las ganas de ayudar</h3>
-                <p>
-                   fecha:
-                </p>
-                <p>              
-                   hora:
-                </p>
-                <p>              
-                    lugar:
-                </p>
-                <p>              
-                    donantes:
-                </p>
-                <br>
-                <p>              
-                    frase
-                </p>
-            </div>
-        </div>
-</div>
-
-
-<div class="container2">
     <h1> Campañas Realizadas</h1>
-    <div class="campañasRealizadas">
-        <div class="contenido">
-            <h3>Prospera vida</h3>
-            <p>
-                <span class="rojo">fecha:</span> <span class="negro">22 de Octubre</span>
-            </p>
-            <p>
-                <span class="rojo">hora:</span> <span class="negro">8:30 am / 2:30 pm</span>
-            </p>
-            <p>
-                <span class="rojo">lugar:</span> <span class="negro">hospital del carmen</span>
-            </p>
-            <p>
-                <span class="rojo">donantes:</span> <span class="negro">0/45</span>
-            </p>
-            <br>
-            <p>
-                <span class="negro">Lo que a ti te sobra a mi me falta</span>
-            </p>
-        </div>
-    </div>
 
+    <div class="container2">
         <div class="campañasRealizadas">
-            <div class="contenido">
-            <h3>Prospera vida</h3>
-            <p>
-                <span class="rojo">fecha:</span> <span class="negro">22 de Octubre</span>
-            </p>
-            <p>
-                <span class="rojo">hora:</span> <span class="negro">8:30 am / 2:30 pm</span>
-            </p>
-            <p>
-                <span class="rojo">lugar:</span> <span class="negro">hospital del carmen</span>
-            </p>
-            <p>
-                <span class="rojo">donantes:</span> <span class="negro">0/45</span>
-            </p>
-            <br>
-            <p>
-                <span class="negro">Lo que a ti te sobra a mi me falta</span>
-            </p>
+            {% for campaña in campañas_realizadas %}
+            <div class="campañas">
+                <div class="contenido">
+                    <a href="{{ url_for('ver_campañas', id=campaña[0]) }}">
+                        <figure>
+                            <img src="{{ url_for('static', filename='img/campaña.jpg') }}" alt="{{ campaña.nombre }}">
+                        </figure>
+                        <div class="contenido">
+                            <h3 class="rojo">{{ campaña[2] }}</h3>
+                            <p class="negro"><strong>Fecha:</strong> {{ campaña[6] }}</p>
+                            <p class="negro"><strong>Hora:</strong> {{ campaña[8] }}</p>
+                            <p class="negro"><strong>Lugar:</strong> {{ campaña[7] }}</p>
+                            <p class="negro"><strong>Donantes:</strong> {{ campaña[8] }}/{{ campaña[3] }}</p>
+                            <br>
+                            <p class="negro"><em>{{ campaña[1] }}</em></p>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-
-        <div class="campañasRealizadas">
-            <div class="contenido">
-                <h3>Las ganas de ayudar</h3>
-                <p>
-                   fecha:
-                </p>
-                <p>              
-                   hora:
-                </p>
-                <p>              
-                    lugar:
-                </p>
-                <p>              
-                    donantes:
-                </p>
-                <br>
-                <p>              
-                    frase
-                </p>
-            </div>
-        </div>
+            {% endfor %}
 </div>
+
+
 
 
 {% endblock %}

@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background-color: #ffffffe9;
+    margin-bottom: 40px;
+
+}
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px 2%;
+    border: 2px solid #ececec;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    
+}
+
+.header .nav-links li {
+    position: relative; 
+}
+
+.header .nav-links li a {
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li {
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover {
+    background-color: #f1f1f1;
+}
+
+.header .nav-links li:hover .submenu {
+    display: block;
+}
+
+
+.header .perfil {
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    height: 80px;
+    width: auto;
+}
+
+h2 {
+    font-size: 24px; 
+    margin: 40px;
+    margin-left: 300px;
+}
+
+
+
+.form-agregar-campana {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    width: 900px;
+    margin: 40px auto;
+    margin-bottom: 60px;
+}
+
+.form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: space-between;
+}
+
+.input-group {
+    flex: 1 1 calc(50% - 20px); 
+    min-width: 250px; 
+    margin-bottom: 5px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 14px;
+
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    
+}
+
+.input-group textarea {
+    resize: vertical;
+}
+
+
+
+button.btn-submit {
+    background-color: #c10c0c;
+    color: #ffffff;
+    border: none;
+    padding: 12px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 70%;
+    transition: background-color 0.3s ease;
+    margin: 20px auto 0;
+    margin-left: 120px;
+    
+
+}
+
+button.btn-submit:hover {
+    background-color: #a61114e7;
+}
+

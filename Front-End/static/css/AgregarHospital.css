@@ -129,7 +129,8 @@ body {
     justify-content: center;
 }
 
-.input-group {
+
+.input-group {  
     flex: 1; 
     min-width: 200px; 
 }

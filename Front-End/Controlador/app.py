@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import psycopg2
-from insertar2 import crear_campana  
+from insertar2 import crear_campana
+from insertar2 import obtener_campañas  
 from insertar import insertar_usuario
 from validar import validar_usuario
 from hospital import crear_hospital, obtener_hospitales, actualizar_hospital, obtener_hospital_por_id
@@ -159,7 +160,15 @@ def eliminar_hospital():
 
 @app.route('/ver_campañas', methods=["GET"])
 def ver_campañas():
-    return render_template("VerCampañas.html") 
+    campañas = obtener_campañas()
+    
+    campañasRealizadas= []
+    for campaña in campañas:
+        if campaña[8]==True:
+            campañasRealizadas.append(campaña)
+    print(campañasRealizadas)
+    
+    return render_template("VerCampañas.html", campañas= campañas, campañasRealizadas= campañasRealizadas) 
 
 
 
