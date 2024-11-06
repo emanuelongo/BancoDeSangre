@@ -3,120 +3,55 @@
 {% block title %}Gestión de Campañas{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/GestionarCampañas.css') }}">
 
 {% endblock %}
 
 {% block content %}
 
- <!-- TODO LO DE LAS TARGETAS DE LOS HOSPITALES -->
-   <div class="container">
-        {% for hospital in hospitales %}
-        <div class="card">
-            <a href="{{ url_for('ver_hospital') }}">
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" >
-                </figure>
-                <div class= "contenido">
-                    <h3>{{ hospital.Nombre }}</h3>
-                    <p>
-                        {{ hospital.Direccion }}
-                    </p>
-                    <p>
-                        {{ hospital.Contacto }}
-                    </p>
-                    
+ 
+   
+<div class="main-content">
+    <h1>Campañas Activas</h1>
+    <div class="container">
+        {% for campaña in campañas %}
+                
+                <div class="card"> 
+                    <div class="contenido">
+                        <a href="{{ url_for('ver_campañas', id=campaña[0]) }}">
+                            <figure>
+                                <img src="{{ url_for('static', filename='img/campaña.jpg') }}" alt="{{ campaña.nombre }}">
+                            </figure>
+                            <div class="contenido">
+                                <h3 class="rojo">{{ campaña[2] }}</h3>
+                                <p class="negro"><strong>Fecha:</strong> {{ campaña[6] }}</p>
+                                <p class="negro"><strong>Hora:</strong> {{ campaña[8] }}</p>
+                                <p class="negro"><strong>Lugar:</strong> {{ campaña[7] }}</p>
+                                <p class="negro"><strong>Donantes:</strong> {{ campaña[8] }}/{{ campaña[3] }}</p>
+                                <br>
+                                <p class="negro"><em>{{ campaña[1] }}</em></p>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="{{ url_for('eliminar_campañas') }}" class="btn-delete-campaña">
+                        ❌
+                    </a>
+                    <a href="{{ url_for('editar_campañas')}}"  class="btn-edit-campaña">
+                        ✏️
+                    </a>
                 </div>
-            </a>
-        </div>
-        <a href="{{ url_for('editar_campañas') }}" class="btn-edit-hospital1">
-            ✏️
-        </a>
-
-        {% endfor %}
-
-        <a href="{{ url_for('eliminar_campañas') }}" class="btn-delete-hospital1">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_campañas')}}"  class="btn-edit-hospital1">
-            ✏️
-        </a>
-
-        <div class="card">
-            <a href="{{ url_for('ver_hospital') }}"><!-- Cambia "verHospital.html" a la ruta correcta -->
-                <figure>
-                    <img src="{{ url_for('static', filename='img/Hospital2.jpg') }}" alt="Clínica Medellín Sede Occidente">
-                </figure>
-                <div class="contenido">
-                    <h3>Clínica Medellín Sede Occidente</h3>
-                    <p>
-                       Cra. 65B #30-95
-                    </p>
-                    <p>              
-                        Medellín, Belén
-                    </p>
-                </div>
-            </a>
-        </div>
-        
-        <a href="{{ url_for('eliminar_campañas') }}" class="btn-delete-hospital2">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_campañas') }}" class="btn-edit-hospital2">
-            ✏️
-        </a>
-
-        <div class="card">
-            
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital3.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Clínica Las Américas Auna</h3>
-                <p>
-                   Cra. 75B #2A-80 
-                </p>
-                <p>              
-                    MedellÍn, Belén
-                </p>
+                
+                {% endfor %}
+                <a href="{{ url_for('agregar_campaña') }}" class="btn-add-campaña">
+                    +
+                </a>
             </div>
-        </div>
-
-        <a href="{{ url_for('eliminar_campañas') }}" class="btn-delete-hospital3">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_campañas') }}" class="btn-edit-hospital3">
-            ✏️
-        </a>
-
-        <div class="card">
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital4.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Hospital Pablo Tobón Uribe</h3>
-                <p>
-                   Cra. 75B #69-240 
-                </p>
-                <p>              
-                    Medellin
-                </p>
-            </div>
-        </div>
-
-        <a href="{{ url_for('eliminar_campañas') }}" class="btn-delete-hospital4">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_campañas') }}" class="btn-edit-hospital4">
-            ✏️
-        </a>
-
-        <a href="{{ url_for('agregar_campaña') }}" class="btn-add-hospital">
-            +
-        </a>
-        
+    </div>
 
 
-   </div>
+</div>
+
+
+
 
 {% endblock %}

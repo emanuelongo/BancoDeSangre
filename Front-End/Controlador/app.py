@@ -174,7 +174,8 @@ def ver_campañas():
 
 @app.route('/gestionar_campañas', methods=["GET"])
 def gestionar_campañas():
-    return render_template("GestionCampañas.html") 
+    campañas = obtener_campañas()
+    return render_template("GestionCampañas.html", campañas= campañas) 
 
 @app.route('/eliminar_campañas', methods=["GET"])
 def eliminar_campañas():
