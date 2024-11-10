@@ -9,16 +9,7 @@
 {% block content %}
 <div class="form-agregar-hospital">
     <form action="{{ url_for('agregar_hospital') }}" method="POST" enctype="multipart/form-data">
-        <div class="form-header">
-            <div class="input-group image-container">
-                <label for="imagen">Imagen del hospital:</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" onchange="previewImage(event)">
-                <div class="image-preview" id="imagePreview">
-                    <img src="" alt="Vista previa de la imagen" class="image-preview__image">
-                    <span class="image-preview__default-text">Vista previa de la imagen</span>
-                </div>
-            </div>
-
+        
             <!-- Contenedor de campos del formulario -->
             <div class="form-fields">
                 <div class="input-group">
@@ -57,25 +48,4 @@
     </form>
 </div>
 
-<script>
-    function previewImage(event) {
-        const imagePreview = document.getElementById('imagePreview');
-        const previewImage = imagePreview.querySelector('.image-preview__image');
-        const defaultText = imagePreview.querySelector('.image-preview__default-text');
-
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.setAttribute('src', e.target.result);
-                imagePreview.style.display = 'block';
-                defaultText.style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewImage.setAttribute('src', '');
-            defaultText.style.display = 'block';
-        }
-    }
-</script>
 {% endblock %}

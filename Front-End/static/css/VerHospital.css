@@ -131,22 +131,30 @@ body {
       
 }
 
-.buttons {
-    display: flex; 
-    width: 300px; 
-    height: 50px; 
-    background-color: #ba181b;
-    border: none;
-    margin-bottom: 16px;
-    margin-left: 100px; 
-    border-radius: 15px; 
-    color: #fff; 
-    justify-content: center; 
-    align-items: center; 
-    text-decoration: none; 
-    font-size: 20px; 
-    transition: transform 0.3s ease, background-color 0.3s ease; /
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    padding-right: 230px;
+    padding-top: 40px; /* Ajusta el margen derecho según sea necesario */
 }
+
+.buttons {
+    display: flex;
+    width: 300px;
+    height: 50px;
+    background-color: #ba181b !important;
+    border: none;
+    border-radius: 15px;
+    color: #fff !important;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
 
 .buttons:hover {
     background-color: #a91616; 

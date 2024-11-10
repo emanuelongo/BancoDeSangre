@@ -18,7 +18,7 @@
                     <div class="col-md-4"> 
                         <div class="card">
                             <a href="{{ url_for('ver_hospital', hospital_id=hospital[0]) }}">
-                                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" class="d-block w-100" alt="{{ hospital[1] }}">
+                                <img src="{{ url_for('static', filename='img/hospital_icon.png') }}" class="d-block w-95 mx-auto" alt="{{ hospital[1] }}">
                                 <div class="contenido">
                                     <h3>{{ hospital[1] }}</h3> <!-- Nombre del hospital -->
                                     <p>{{ hospital[2] }}</p> <!-- Dirección del hospital -->
@@ -33,14 +33,6 @@
         </div>
 
        
-        <a class="carousel-control-prev" href="#hospitalCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#hospitalCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-        </a>
     </div>
     {% else %}
         <p>No hay hospitales disponibles.</p>
