@@ -211,6 +211,7 @@ def agregar_campaña():
         
         crear_campana(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario)
         
+        
         return redirect(url_for('gestionar_campañas'))  
   
     return render_template("AgregarCampaña.html")
