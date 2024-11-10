@@ -106,16 +106,43 @@ def ver_hospital(hospital_id):
         return redirect(url_for("catalogo_hospitales")) 
 
 
-
-
-
-
-
-
-
 @app.route('/gestionar_hospitales', methods=["GET", "POST"])
 def gestionar_hospitales():
     return render_template("GestionHospitales.html", hospitales =  hospitales) 
+
+
+
+
+
+
+
+
+
+
+
+
+#ELIMINAR HOSPITAL
+#---------------------------
+@app.route('/eliminar_hospital', methods=["GET", "POST"])
+def eliminar_hospital():
+    return render_template("EliminarHospitales.html") 
+#--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -144,9 +171,8 @@ def editar_hospital():
     return render_template("EditarHospitales.html")#, hospital= hospital_a_editar ) 
 
 
-@app.route('/eliminar_hospital', methods=["GET", "POST"])
-def eliminar_hospital():
-    return render_template("EliminarHospitales.html") 
+
+
 
 @app.route('/ver_campañas', methods=["GET"])
 def ver_campañas():
