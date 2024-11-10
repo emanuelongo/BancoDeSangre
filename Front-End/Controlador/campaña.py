@@ -1,14 +1,8 @@
 import psycopg2
 from psycopg2 import sql
+from conexion import obtener_conexion
 
-def obtener_conexion():
-    return psycopg2.connect(
-        dbname="LifeLine",
-        user="postgres",
-        password="a",
-        host="localhost",
-        port="5432"
-    )
+
     
 def crear_campana(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, Realizada=False):
     conn = None
