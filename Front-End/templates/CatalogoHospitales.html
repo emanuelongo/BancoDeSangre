@@ -4,27 +4,51 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 {% endblock %}
 
 {% block content %}
 <div class="container">
     {% if hospitales %}
-        {% for hospital in hospitales %}
-        <div class="card">
-            <a href="{{ url_for('ver_hospital', hospital_id=hospital[1]) }}"> <!-- Usa el ID del hospital -->
-                <figure>
-                    <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" alt="{{ hospital[1] }}">
-                </figure>
-                <div class="contenido">
-                    <h3>{{ hospital[1] }}</h3> <!-- Nombre del hospital -->
-                    <p>{{ hospital[2] }}</p> <!-- Dirección del hospital -->
-                    <p>{{ hospital[3] }}</p> <!-- Contacto del hospital -->
+    <div id="hospitalCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row"> 
+                    {% for hospital in hospitales %}
+                    <div class="col-md-4"> 
+                        <div class="card">
+                            <a href="{{ url_for('ver_hospital', hospital_id=hospital[0]) }}">
+                                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" class="d-block w-100" alt="{{ hospital[1] }}">
+                                <div class="contenido">
+                                    <h3>{{ hospital[1] }}</h3> <!-- Nombre del hospital -->
+                                    <p>{{ hospital[2] }}</p> <!-- Dirección del hospital -->
+                                    <p>{{ hospital[3] }}</p> <!-- Contacto del hospital -->
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-            </a>
+            </div>
         </div>
-        {% endfor %}
+
+       
+        <a class="carousel-control-prev" href="#hospitalCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#hospitalCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
     {% else %}
-        <p>No hay hospitales disponibles.</p> <!-- Mensaje si no hay hospitales -->
+        <p>No hay hospitales disponibles.</p>
     {% endif %}
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 {% endblock %}

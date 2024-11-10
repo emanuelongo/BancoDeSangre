@@ -4,120 +4,26 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/CatalogoHospitales.css') }}">
-
 {% endblock %}
 
 {% block content %}
-
- <!-- TODO LO DE LAS TARGETAS DE LOS HOSPITALES -->
-   <div class="container">
-        {% for hospital in hospitales %}
-        <div class="card">
-            <a href="{{ url_for('ver_hospital') }}">
+<div class="container">
+    {% for hospital in hospitales %}
+    <div class="card">
+        <a href="{{ url_for('ver_hospital', hospital_id=hospital.id) }}">
             <figure>
-                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" >
-                </figure>
-                <div class= "contenido">
-                    <h3>{{ hospital.Nombre }}</h3>
-                    <p>
-                        {{ hospital.Direccion }}
-                    </p>
-                    <p>
-                        {{ hospital.Contacto }}
-                    </p>
-                    
-                </div>
-            </a>
-        </div>
-        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital1">
-            ✏️
-        </a>
-
-        {% endfor %}
-
-        <a href="{{ url_for('eliminar_hospital') }}" class="btn-delete-hospital1">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_hospital')}}"  class="btn-edit-hospital1">
-            ✏️
-        </a>
-
-        <div class="card">
-            <a href="{{ url_for('ver_hospital') }}"><!-- Cambia "verHospital.html" a la ruta correcta -->
-                <figure>
-                    <img src="{{ url_for('static', filename='img/Hospital2.jpg') }}" alt="Clínica Medellín Sede Occidente">
-                </figure>
-                <div class="contenido">
-                    <h3>Clínica Medellín Sede Occidente</h3>
-                    <p>
-                       Cra. 65B #30-95
-                    </p>
-                    <p>              
-                        Medellín, Belén
-                    </p>
-                </div>
-            </a>
-        </div>
-        
-        <a href="{{ url_for('eliminar_hospital') }}" class="btn-delete-hospital2">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital2">
-            ✏️
-        </a>
-
-        <div class="card">
-            
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital3.jpg') }}" >
+                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" alt="Imagen del hospital">
             </figure>
             <div class="contenido">
-                <h3>Clínica Las Américas Auna</h3>
-                <p>
-                   Cra. 75B #2A-80 
-                </p>
-                <p>              
-                    MedellÍn, Belén
-                </p>
+                <h3>{{ hospital.Nombre }}</h3>
+                <p>{{ hospital.Direccion }}</p>
+                <p>{{ hospital.Contacto }}</p>
             </div>
-        </div>
-
-        <a href="{{ url_for('eliminar_hospital') }}" class="btn-delete-hospital3">
-            ❌
         </a>
-        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital3">
-            ✏️
-        </a>
-
-        <div class="card">
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital4.jpg') }}" >
-            </figure>
-            <div class="contenido">
-                <h3>Hospital Pablo Tobón Uribe</h3>
-                <p>
-                   Cra. 75B #69-240 
-                </p>
-                <p>              
-                    Medellin
-                </p>
-            </div>
-        </div>
-
-        <a href="{{ url_for('eliminar_hospital') }}" class="btn-delete-hospital4">
-            ❌
-        </a>
-        <a href="{{ url_for('editar_hospital') }}" class="btn-edit-hospital4">
-            ✏️
-        </a>
-
-        <a href="{{ url_for('agregar_hospital') }}" class="btn-add-hospital">
-            +
-        </a>
-        
-
-
-   </div>
-
+        <a href="{{ url_for('editar_hospital', hospital_id=hospital.id) }}" class="btn-edit-hospital">✏️</a>
+        <a href="{{ url_for('eliminar_hospital', hospital_id=hospital.id) }}" class="btn-delete-hospital">❌</a>
+    </div>
+    {% endfor %}
+    <a href="{{ url_for('agregar_hospital') }}" class="btn-add-hospital">+</a>
+</div>
 {% endblock %}
-

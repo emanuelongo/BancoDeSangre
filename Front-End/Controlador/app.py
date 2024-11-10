@@ -5,7 +5,7 @@ from campaña import obtener_campañas, obtener_campaña, eliminar_campaña
  
 from insertar import insertar_usuario
 from validar import validar_usuario
-from hospital import crear_hospital, obtener_hospitales, actualizar_hospital, obtener_hospital_por_id
+from hospital import crear_hospital, obtener_hospitales,  obtener_hospital_por_id
 
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
@@ -79,9 +79,10 @@ def agregar_hospital_route():
         else:
             flash(mensaje, "error")
         
-        return redirect(url_for("gestionar_hospitales"))  # Redirige a la página de gestión de hospitales
+        return redirect(url_for("catalogo_hospitales"))
+    
+    return render_template("AgregarHospital.html")
 
-    return render_template("AgregarHospital.html") 
 
 @app.route('/agregar_hospital')
 def agregar_hospital():
@@ -91,37 +92,25 @@ def agregar_hospital():
 @app.route('/catalogo_hospitales')
 def catalogo_hospitales():
     hospitales = obtener_hospitales()  # Obtiene la lista de hospitales
-    return render_template('CatalogoHospitales.html', hospitales=hospitales)  # Asegúrate de que el nombre de la plantilla sea correcto
+    return render_template('CatalogoHospitales.html', hospitales=hospitales)
 
-@app.route('/editar_hospital/<int:hospital_id>', methods=["GET", "POST"])
-def editar_hospital_route(hospital_id):
-    if request.method == "POST":
-        nombre = request.form.get('nombre')
-        direccion = request.form.get('direccion')
-        contacto = request.form.get('contacto')
-        horario = request.form.get('horario')
-        estado = request.form.get('estado') 
 
-        exito, mensaje = actualizar_hospital(hospital_id, nombre, direccion, contacto, horario, estado)
 
-        if exito:
-            flash(mensaje, "success")
-        else:
-            flash(mensaje, "error")
-
-        return redirect(url_for("gestionar_hospitales"))  # Redirige a la página de gestión de hospitales
-
-    # Para solicitudes GET, obtenemos los datos actuales del hospital
+@app.route('/hospital/<int:hospital_id>')
+def ver_hospital(hospital_id):
     hospital = obtener_hospital_por_id(hospital_id)
-    return render_template("EditarHospital.html", hospital=hospital)
+    if hospital:
+        return render_template("verhospital2.html", hospital=hospital)
+    else:
+        flash("El hospital no existe", "error")
+        return redirect(url_for("catalogo_hospitales")) 
 
 
 
 
 
-@app.route('/ver_hospital', methods=["GET"])
-def ver_hospital():
-    return render_template("VerHospital.html")
+
+
 
 
 @app.route('/gestionar_hospitales', methods=["GET", "POST"])

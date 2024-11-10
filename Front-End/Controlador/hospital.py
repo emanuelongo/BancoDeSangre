@@ -10,14 +10,14 @@ def crear_hospital(nombre, direccion, contacto, horario, estado):
                 (nombre, direccion, contacto, horario, estado)
             )
             conn.commit()
+
+        return True, "Hospital agregado con éxito."  # Devolver una tupla en caso de éxito
         
     except Exception as e:
         print(f"Error al agregar hospital: {e}")
-        return False, "Error al agregar hospital."
+        return False, "Error al agregar hospital."  # También es una tupla en caso de error
     finally:
         conn.close()
-
-
 
 
 def obtener_hospitales():
@@ -35,38 +35,31 @@ def obtener_hospitales():
     finally:
         conn.close()
 
-def actualizar_hospital(hospital_id, nombre, direccion, contacto, horario, estado):
-    try:
-        conn = obtener_conexion()
-        with conn.cursor() as cur:
-            cur.execute(sql.SQL("""
-                UPDATE hospital
-                SET nombre = %s, direccion = %s, contacto = %s, horario = %s, estado = %s
-                WHERE id = %s
-            """), (nombre, direccion, contacto, horario, estado, hospital_id))
-            conn.commit()
-            return True, "Hospital actualizado exitosamente."
-    
-    except Exception as e:
-        print(f"Error al actualizar el hospital: {e}")
-        return False, "Error al actualizar el hospital."
-
-    finally:
-        conn.close()
 
 def obtener_hospital_por_id(hospital_id):
     try:
         conn = obtener_conexion()
         with conn.cursor() as cur:
-            cur.execute(sql.SQL("SELECT * FROM hospital WHERE id = %s"), (hospital_id,))
-            return cur.fetchone()  # Devuelve todos los campos del hospital.
-    
+            cur.execute(
+                sql.SQL("SELECT nombre, direccion, contacto, horario, estado FROM hospital WHERE id = %s"),
+                (hospital_id,)
+            )
+            hospital = cur.fetchone()  # Devuelve solo un resultado
+            if hospital:
+                # Retorna el hospital como un diccionario
+                return {
+                    "Nombre": hospital[0],
+                    "Direccion": hospital[1],
+                    "Contacto": hospital[2],
+                    "Horario": hospital[3],
+                    "Estado": hospital[4],
+                }
     except Exception as e:
-        print(f"Error al obtener el hospital: {e}")
+        print(f"Error al obtener hospital: {e}")
         return None
-    
     finally:
         conn.close()
+
 
 
 
