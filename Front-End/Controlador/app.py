@@ -169,8 +169,15 @@ def ver_campañas():
 
 @app.route('/gestionar_campañas', methods=["GET"])
 def gestionar_campañas():
-    campañas = obtener_campañas()
-    return render_template("GestionCampañas.html", campañas= campañas) 
+    campañas=[]
+    totalcampañas = obtener_campañas()
+    
+    for campaña in totalcampañas:
+        if campaña[9] == False:
+            campañas.append(campaña)
+    
+    
+    return render_template("GestionCampañas.html", campañas = campañas) 
 
 
 from flask import request, redirect, url_for, render_template
