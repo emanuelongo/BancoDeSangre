@@ -13,13 +13,13 @@ def crear_campana(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto
         with conn.cursor() as cur:
             cur.execute(
                 sql.SQL("""
-                    INSERT INTO campañas (nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, Realizada)
+                    INSERT INTO campaña (nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, Realizada)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
                 """),
                 (nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, Realizada)
             )  
             conn.commit() 
-            print("Campaña insertada exitosamente.")
+            print("Campaña insertada exitosamente .")
             
     except Exception as e:
         print(f"Error al insertar la campaña: {e}")
@@ -33,7 +33,7 @@ def obtener_campañas():
         with conn.cursor() as cur:
             cur.execute("""
                 SELECT id, nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, Realizada
-                FROM campañas
+                FROM campaña
             """)
             campañas = cur.fetchall() 
             
@@ -61,7 +61,7 @@ def obtener_campaña(id):
     try:
         conn = obtener_conexion()
         with conn.cursor() as cur:
-            cur.execute(sql.SQL("SELECT * FROM campañas WHERE id = %s"), (id,))
+            cur.execute(sql.SQL("SELECT * FROM campaña WHERE id = %s"), (id,))
             return cur.fetchone() 
     
     except Exception as e:
@@ -77,7 +77,7 @@ def eliminar_campaña(id):
     try:
         conn = obtener_conexion()
         with conn.cursor() as cur:
-            cur.execute(sql.SQL("DELETE FROM campañas WHERE id = %s"), (id,))
+            cur.execute(sql.SQL("DELETE FROM campaña WHERE id = %s"), (id,))
             conn.commit() 
         print(f"Campaña con id {id} eliminada correctamente.")
     except Exception as e:

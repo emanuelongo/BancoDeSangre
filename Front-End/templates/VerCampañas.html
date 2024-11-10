@@ -13,7 +13,7 @@
 <div class="main-content">
     <h1>Campañas Activas</h1>
     <div class="container">
-        {% for campaña in campañas %}
+        {% for campaña in campañas_activas %}
         <div class="campañas">
             <div class="contenido">
                 <a href="{{ url_for('ver_campañas', id=campaña[0]) }}">
@@ -38,8 +38,7 @@
     <h1> Campañas Realizadas</h1>
 
     <div class="container2">
-        <div class="campañasRealizadas">
-            {% for campaña in campañas_realizadas %}
+            {% for campaña in campañasRealizadas %}
             <div class="campañas">
                 <div class="contenido">
                     <a href="{{ url_for('ver_campañas', id=campaña[0]) }}">

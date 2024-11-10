@@ -150,22 +150,34 @@ def eliminar_hospital():
 
 @app.route('/ver_campañas', methods=["GET"])
 def ver_campañas():
+    campañas_activas=[]
     campañas = obtener_campañas()
+    
+    for campaña in campañas:
+        if campaña[9] == False:
+            campañas_activas.append(campaña)
     
     campañasRealizadas= []
     for campaña in campañas:
-        if campaña[8]==True:
+        if campaña[9]==True:
             campañasRealizadas.append(campaña)
     print(campañasRealizadas)
     
-    return render_template("VerCampañas.html", campañas= campañas, campañasRealizadas= campañasRealizadas) 
+    return render_template("VerCampañas.html", campañas_activas= campañas_activas, campañasRealizadas= campañasRealizadas) 
 
 
 
 @app.route('/gestionar_campañas', methods=["GET"])
 def gestionar_campañas():
-    campañas = obtener_campañas()
-    return render_template("GestionCampañas.html", campañas= campañas) 
+    campañas=[]
+    totalcampañas = obtener_campañas()
+    
+    for campaña in totalcampañas:
+        if campaña[9] == False:
+            campañas.append(campaña)
+    
+    
+    return render_template("GestionCampañas.html", campañas = campañas) 
 
 
 from flask import request, redirect, url_for, render_template
@@ -210,6 +222,7 @@ def agregar_campaña():
         horario = request.form.get('horario')
         
         crear_campana(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario)
+        
         
         return redirect(url_for('gestionar_campañas'))  
   
