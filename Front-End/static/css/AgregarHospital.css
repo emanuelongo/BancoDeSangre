@@ -7,13 +7,22 @@
     font-size: 20px;
 }
 
+h2 {
+    font-size: 24px; 
+    margin: 40px;
+    margin-left: 300px;
+    color: #BA181B; /* Cambia este color según tus necesidades */
+}
+
+
+
 body {
-    background-color: #BA181B;
+    background-color: #e9e3e3;
     font-family: 'Nunito', sans-serif;
 }
 
 .header {
-    background-color: #FFFFFF;
+    background-color: #BA181B;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +47,7 @@ body {
 
 .header .nav-links li a {
     font-weight: 700;
-    color: #BA181B;
+    color: #ffffff;
     text-decoration: none;
     padding: 10px;
     display: block;
