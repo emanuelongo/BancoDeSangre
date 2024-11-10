@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import psycopg2
-from insertar2 import crear_campana
-from insertar2 import obtener_campañas  
+from campaña import crear_campana
+from campaña import obtener_campañas, obtener_campaña, eliminar_campaña
+ 
 from insertar import insertar_usuario
 from validar import validar_usuario
 from hospital import crear_hospital, obtener_hospitales, actualizar_hospital, obtener_hospital_por_id
@@ -177,9 +178,27 @@ def gestionar_campañas():
     campañas = obtener_campañas()
     return render_template("GestionCampañas.html", campañas= campañas) 
 
-@app.route('/eliminar_campañas', methods=["GET"])
-def eliminar_campañas():
-    return render_template("EliminarCampañas.html")
+
+from flask import request, redirect, url_for, render_template
+@app.route('/eliminar_campañas/<int:id>', methods=['GET', 'POST'])
+def eliminar_campañas(id):
+    try:
+        campaña = obtener_campaña(id)
+        if campaña is None:
+            return redirect(url_for('gestionar_campañas')) 
+        
+        if request.method == 'POST':
+            eliminar_campaña(id)
+            return redirect(url_for('gestionar_campañas')) 
+        
+        return render_template("EliminarCampañas.html", campaña=campaña)
+    
+    except Exception as e:
+        print(f"Error al eliminar la campaña: {e}")
+        flash("Hubo un error al eliminar la campaña.", "error")
+        return redirect(url_for('gestionar_campañas'))
+
+
 
 @app.route('/editar_campañas', methods=["GET"])
 def editar_campañas():

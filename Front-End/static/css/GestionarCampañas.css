@@ -8,9 +8,14 @@
     font-size: 20px;
 }
 
+
 body {
     background-color: #BA181B;
-}
+    background: linear-gradient(to bottom, #c71b1e, #6f0101); 
+    min-height: 100vh;  
+    margin: 0;  
+    padding: 0;  
+
 
 .header {
     background-color: #FFFFFF;
@@ -101,9 +106,6 @@ h1 {
 
 
 
-
-
-
 .main-content {
     display: flex;
     flex-direction: column; 
@@ -171,6 +173,9 @@ h1 {
     text-decoration: none; 
 }
 
+a {
+    text-decoration: none; 
+}
 
 
 
@@ -188,6 +193,8 @@ h1 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
       
     color: rgb(1, 1, 1); 
     top: 110%; 
@@ -211,7 +218,7 @@ h1 {
 
 .btn-edit-campaña {
     margin: 40px;
-    margin-bottom: 150PX;
+    margin-bottom: 150px;
     background-color: #dcdcdc; 
     color: rgb(1, 1, 1); 
     font-size: 36px; 
