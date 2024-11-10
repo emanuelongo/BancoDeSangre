@@ -14,7 +14,7 @@ body {
     min-height: 100vh;  
     margin: 0;  
     padding: 0;  
-
+}
 
 a {
     text-decoration: none; 
@@ -122,7 +122,31 @@ a {
     margin-left: 10px;
 }
  
+.contenido h3 
+{
+    justify-content: center;
 
+    display: flex;
+    color: #000000; 
+    margin-bottom: 30px; 
+    white-space: nowrap; 
+}
+
+.contenido p 
+{
+    justify-content: center;
+    display: flex;
+}
+
+
+h1 
+{
+    text-align: left ;
+    color: #ffffff; 
+    margin-left: 20px;
+    margin-bottom: 30px; 
+    white-space: nowrap; 
+}
 
 
 
@@ -164,67 +188,24 @@ a {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contenido h3 
-{
-    justify-content: center;
-
-    display: flex;
-    color: #000000; 
-    margin-bottom: 30px; 
-    white-space: nowrap; 
-}
-
-.contenido p 
-{
-    justify-content: center;
-    display: flex;
-}
 
 
-h1 
-{
-    text-align: left ;
-    color: #ffffff; 
-    margin-left: 20px;
-    margin-bottom: 30px; 
-    white-space: nowrap; 
-}
+
 
 
 
 .container2 {
     display: flex;
     justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     width: 100%;
     border-radius: 10px;
 }
 
-.campañasRealizadas {
-    width: 100%;
-    max-width: 350px;
-    margin: 20px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-}
 
-.campañasRealizadas:hover {
-    background-color: #bfbfbf;
-    transform: scale(1.05);
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
-.campañasRealizadas:active {
-    transform: scale(0.95);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 .rojo {
     color: red;
