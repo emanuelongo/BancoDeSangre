@@ -44,7 +44,7 @@ def inicio_sesion():
             return redirect(url_for("menu_solicitante"))
         else:
             # Redirigir a la página de menú usuario (o cualquier otra según sea el caso)
-            return redirect(url_for("menu_usuario"))
+            return redirect(url_for("menu_donante"))
     else:
         # Mostrar el mensaje de error
         flash(f"Error en el registro: {mensaje}", "error")
@@ -53,6 +53,10 @@ def inicio_sesion():
 @app.route("/menu_admin")
 def menu_admin():
     return render_template("MenuAdmi.html")
+
+@app.route("/menu_donante")
+def menu_donante():
+    return render_template("MenuDonante.html")
 
 @app.route("/menu_solicitante")
 def menu_solicitante():
