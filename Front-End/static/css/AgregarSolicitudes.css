@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Nunito', sans-serif;
+  font-size: 20px;
+}
+
+body {
+  background-color: #BA181B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Encabezado */
+.header {
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 70px;
+  width: 100%;
+  padding: 0 2%;
+}
+
+.header .logo img {
+  height: 50px;
+  width: auto;
+}
+
+/* Contenedor del Formulario */
+.solicitud-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 90%;
+  margin: 40px 2%;
+}
+
+/* Título del Formulario */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* Estilos de Etiqueta */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #666;
+  font-size: 15px;
+}
+
+/* Campos de entrada uniformes */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+input[type="tel"],
+input[type="time"],
+input[type="number"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  height: 45px; /* Altura uniforme */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s, background-color 0.3s;
+  box-sizing: border-box;
+  resize: none; /* Evita que el textarea sea redimensionable */
+}
+
+/* Ajuste de altura para textarea */
+textarea {
+  height: 90px; /* Altura personalizada para Información Adicional */
+  padding: 10px; /* Asegura consistencia de padding */
+}
+
+/* Efecto de enfoque */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #BA181B;
+  outline: none;
+  background-color: #fdf2f3;
+}
+
+/* Botón Enviar */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #BA181B;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto de desplazamiento sobre el botón */
+button:hover {
+  background-color: #a11619;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Enlace para la creación de cuenta */
+.form-login p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.form-login pa {
+  color: #FFE1E1;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.form-login pa:hover {
+  color:#ffdada;
+}
+
+@media (max-width: 768px) {
+  .solicitud-container {
+    padding: 15px;
+  }
+}

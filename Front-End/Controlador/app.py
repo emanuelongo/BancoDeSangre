@@ -7,6 +7,8 @@ from insertar import insertar_usuario
 from validar import validar_usuario
 from hospital import crear_hospital, obtener_hospitales,  obtener_hospital_por_id
 
+from solicitudes import crear_solicitud
+
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
 app.secret_key = 'clave'
@@ -111,7 +113,35 @@ def gestionar_hospitales():
     return render_template("GestionHospitales.html", hospitales =  hospitales) 
 
 
+@app.route('/agregar_solicitud', methods=["GET", "POST"])
+def agregar_solicitud_route():
+    if request.method == "POST":
+        
+        tipo_sangre = request.form.get('tipo_sangre')
+        cantidad_sangre = request.form.get('cantidad_sangre')
+        numero_contacto = request.form.get('numero_contacto')
+        fecha_solicitud = request.form.get('fecha_solicitud')
+        hora_solicitud = request.form.get('hora_solicitud')
+        direccion = request.form.get('direccion')
+        informacion_adicional = request.form.get('informacion_adicional')
 
+        
+        exito, mensaje = crear_solicitud(tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional )
+        
+        if exito:
+            return redirect(url_for('agregar_solicitudes'))
+    else:
+        return f"Error: {mensaje}"
+
+
+@app.route('/agregar_solicitudes')
+def agregar_solicitud():
+    return render_template("AgregarSolicitudes.html")
+
+@app.route('/solicitudes')
+def solicitudes():
+    return render_template("solicitudes.html")
+ # Muestra el formulario de agregar hospital
 
 
 

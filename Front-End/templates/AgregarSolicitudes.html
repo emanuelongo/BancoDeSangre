@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/AgregarSolicitudes.css">
+    <title>Realizar Solicitud de Sangre</title>
+</head>
+
+<header class="header">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='img/BancoSangre.jpeg') }}" alt="logo del sistema">
+
+    </div>
+</header>
+
+<div class="solicitud-container">
+    <h2>Solicitud de Sangre</h2>
+    <form id="solicitudForm" method="POST" action="/agregar_solicitud">
+        <label for="tipo_sangre">Tipo de Sangre Requerida</label>
+        <select id="tipo_sangre" name="tipo_sangre" required>
+            <option value="O+">O+</option>
+            <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="AB+">AB+</option>
+            <option value="O-">O-</option>
+            <option value="A-">A-</option>
+            <option value="B-">B-</option>
+            <option value="AB-">AB-</option>
+        </select>
+
+        <label for="cantidad_sangre">Cantidad de Sangre Requerida (en litros)</label>
+        <input type="number" id="cantidad_sangre" name="cantidad_sangre" step="0.1" required>
+
+        <label for="numero_contacto">Número de Contacto</label>
+        <input type="tel" id="numero_contacto" name="numero_contacto">
+
+        <label for="fecha_solicitud">Fecha de Solicitud</label>
+        <input type="date" id="fecha_solicitud" name="fecha_solicitud" required>
+
+        <label for="hora_solicitud">Hora de Solicitud</label>
+        <input type="time" id="hora_solicitud" name="hora_solicitud" required>
+
+        <label for="direccion">Dirección de Entrega</label>
+        <input type="text" id="direccion" name="direccion">
+
+        <label for="informacion_adicional">Información Adicional</label>
+        <textarea id="informacion_adicional" name="informacion_adicional" ></textarea>
+
+        <button type="submit">Realizar Solicitud</button>
+    </form>
+</div>
+
+</html>
