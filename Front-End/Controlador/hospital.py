@@ -11,7 +11,7 @@ def crear_hospital(nombre, direccion, contacto, horario, estado):
             )
             conn.commit()
 
-        return True  # Devolver una tupla en caso de éxito
+        return True, "Hospital agregado con éxito."  # Devolver una tupla en caso de éxito
         
     except Exception as e:
         print(f"Error al agregar hospital: {e}")
@@ -59,9 +59,6 @@ def obtener_hospital_por_id(hospital_id):
         return None
     finally:
         conn.close()
-
-
-
 
 
 

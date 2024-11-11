@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background-color: #FFFFFF;
+}
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 10px 2%;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links li {
+    position: relative; 
+}
+
+.header .nav-links li a {
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li {
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostrar submenú al pasar el ratón */
+.header .nav-links li:hover .submenu {
+    display: block;
+}
+
+.header .perfil {
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    height: 80px;
+    width: auto;
+}
+
+.image-container img {
+    width: 400px;
+    height: auto;
+    margin-left: 180px;
+}
+
+/* Contenido principal */
+.main-content {
+    margin-left: 3%;
+    color: #BA181B;
+    margin-top: 20px;
+}
+
+.main-content h1 {
+    color: #BA181B;
+    margin-top: 5px;
+    margin-left: 400px;
+}
+
+/* Estilo para los datos curiosos */
+.donation-facts {
+    margin-left: -40px; /* Ajusta el margen izquierdo para moverlo a la izquierda */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+
+.donation-facts .fact {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 22%;  /* Ajusta el ancho de cada tarjeta */
+    min-width: 250px;
+    flex: 1 1 20%; /* Hace que los elementos se ajusten al 22% del contenedor y sean flexibles */
+}
+
+.donation-facts .fact img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.donation-facts .fact h3 {
+    margin-top: 15px;
+    color: #BA181B;
+}
+
+.donation-facts .fact p {
+    color: #333;
+    margin-top: 10px;
+}
+
+
