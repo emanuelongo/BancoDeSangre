@@ -1,83 +1,32 @@
-    {% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Editar hospital{% endblock %}
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/EditarHospital.css') }}">
-{% endblock %}
+{% block title %}Editar Hospital{% endblock %}
 
 {% block content %}
-<div class="form-editar-hospital">
-    <form action="{{ url_for('editar_hospital') }}" enctype="multipart/form-data" method="POST">
-        <div class="form-header">
-            <div class="input-group image-container">
-                <label for="imagen">Imagen del hospital:</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" onchange="previewImage(event)">
-                <div class="image-preview" id="imagePreview">
-                    <img src="" alt="Vista previa de la imagen" class="image-preview__image">
-                    <span class="image-preview__default-text">Vista previa de la imagen</span>
-                </div>
-            </div>
-
-            <!-- Contenedor de campos del formulario -->
-            <div class="form-fields">
-                <div class="input-group">
-                    <label for="nombre">Nombre del hospital:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="">
-                </div>
-
-                <div class="input-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" placeholder="">
-                </div>
-
-                <div class="input-group">
-                    <label for="contacto">Contacto:</label>
-                    <input type="text" id="contacto" name="contacto" placeholder="">
-                </div>
-
-                <div class="input-group">
-                    <label for="horario">Horario de atención:</label>
-                    <input type="text" id="horario" name="horario" placeholder="">
-                </div>
-
-                <div class="input-group">
-                    <label for="estado">Estado del hospital:</label>
-                    <select id="estado" name="estado" required>
-                        <option value="habilitado">Habilitado</option>
-                        <option value="deshabilitado">Deshabilitado</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn-submit">Editar Hospital</button>
-            </div>
+<div class="container">
+    <h2>Editar Hospital</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ hospital['Nombre'] }}" required>
         </div>
-
-        
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="{{ hospital['Direccion'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="contacto">Contacto</label>
+            <input type="text" class="form-control" id="contacto" name="contacto" value="{{ hospital['Contacto'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="horario">Horario</label>
+            <input type="text" class="form-control" id="horario" name="horario" value="{{ hospital['Horario'] }}" required>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <input type="text" class="form-control" id="estado" name="estado" value="{{ hospital['Estado'] }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </form>
 </div>
-
-
-
-<script>
-    function previewImage(event) {
-        const imagePreview = document.getElementById('imagePreview');
-        const previewImage = imagePreview.querySelector('.image-preview__image');
-        const defaultText = imagePreview.querySelector('.image-preview__default-text');
-
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.setAttribute('src', e.target.result);
-                imagePreview.style.display = 'block';
-                defaultText.style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewImage.setAttribute('src', '');
-            defaultText.style.display = 'block';
-        }
-    }
-</script>
 {% endblock %}

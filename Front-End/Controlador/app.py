@@ -5,7 +5,7 @@ from campaña import obtener_campañas, obtener_campaña, eliminar_campaña
  
 from insertar import insertar_usuario
 from validar import validar_usuario
-from hospital import crear_hospital, obtener_hospitales,  obtener_hospital_por_id
+from hospital import crear_hospital, obtener_hospitales,  obtener_hospital_por_id, actualizar_hospital, eliminar_hospital_por_id
 
 from solicitudes import crear_solicitud, obtener_solicitud
 from datetime import datetime
@@ -109,11 +109,6 @@ def catalogo_hospitales():
     hospitales = obtener_hospitales()  
     return render_template('CatalogoHospitales.html', hospitales=hospitales)
 
-@app.route('/gestionar_hospitales')
-def gestionar_hospitales():
-    return render_template("GestionHospitales.html") 
-
-
 
 @app.route('/hospital/<int:hospital_id>')
 def ver_hospital(hospital_id):
@@ -212,74 +207,63 @@ def solicitud():
 
 
 
+#---------------------------------------------------------------------------------------------------------
 
+@app.route('/gestionar_hospitales', methods=["GET", "POST"])
+def gestionar_hospitales():
+    hospitales = obtener_hospitales()  # Obtiene la lista de hospitales
+    return render_template("GestionHospitales.html", hospitales =  hospitales) 
 
+@app.route('/some_route')
+def some_function():
+    # Redirige al usuario a la ruta 'gestionar_hospitales'
+    return redirect(url_for('gestionar_hospitales'))    
 
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
+#---------------------------------------------------------------------------------------------------------
 #ELIMINAR HOSPITAL
-#---------------------------
-@app.route('/eliminar_hospital', methods=["GET", "POST"])
-def eliminar_hospital():
-    return render_template("EliminarHospitales.html") 
-#--------------------
+@app.route('/eliminar_hospital/<int:hospital_id>', methods=['GET', 'POST'])
+def eliminar_hospital(hospital_id):
+    if request.method == 'POST':
+        # Si el formulario se envía, eliminamos el hospital
+        eliminar_hospital_por_id(hospital_id)  # Elimina el hospital con el ID recibido
+        flash('El hospital ha sido eliminado con éxito', 'success')
+        return redirect(url_for('catalogo_hospitales'))  # Redirige al catálogo de hospitales después de la eliminación
 
+    # Si el método es GET, muestra la página de confirmación para eliminar el hospital
+    return render_template('EliminarHospitales.html', hospital_id=hospital_id)
+#---------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/editar_hospital', methods=["GET", "POST"])
-def editar_hospital():
-    hospital_a_editar = None  
+#---------------------------------------------------------------------------------------------------------
+#EDITAR HOSPITAL
+@app.route('/editar_hospital/<int:hospital_id>', methods=["GET", "POST"])
+def editar_hospital(hospital_id):
+    # Obtén el hospital por su ID
+    hospital = obtener_hospital_por_id(hospital_id)
     
-    #for hospital in hospitales:
-        #print(f"intentando editar hospital con id: {hospital_id}") 
-
-        #if hospital['id'] == hospital_id:
-            #hospital_a_editar = hospital 
-            
-    #print(hospital_a_editar.nombre)
-            
-    #if hospital_a_editar is None:
-        #return "Hospital no encontrado", 404 
-
-    #if request.method == "POST":
-        #hospital_a_editar["Nombre"]= request.form.get("nombre")
-        #hospital_a_editar["Direccion"]= request.form.get("direccion")
-        #hospital_a_editar["Contacto"]= request.form.get("contacto")
-        #hospital_a_editar["Horario"]= request.form.get("horario")
-
+    if hospital is None:
+        flash("El hospital no existe", "error")
+        return redirect(url_for('catalogo_hospitales'))  # Redirige si no se encuentra el hospital
     
-    return render_template("EditarHospitales.html")#, hospital= hospital_a_editar ) 
-
-
-
+    if request.method == "POST":
+        # Actualiza los campos del hospital
+        nombre = request.form.get('nombre')
+        direccion = request.form.get('direccion')
+        contacto = request.form.get('contacto')
+        horario = request.form.get('horario')
+        estado = request.form.get('estado')
+        
+        # Llama a la función para actualizar el hospital en la base de datos
+        exito, mensaje = actualizar_hospital(hospital_id, nombre, direccion, contacto, horario, estado)
+        
+        if exito:
+            flash(mensaje, "success")
+        else:
+            flash(mensaje, "error")
+        
+        return redirect(url_for('catalogo_hospitales'))  # Redirige al catálogo de hospitales
+    
+    return render_template("EditarHospitales.html", hospital=hospital)
+#---------------------------------------------------------------------------------------------------------
 
 
 @app.route('/ver_campañas', methods=["GET"])

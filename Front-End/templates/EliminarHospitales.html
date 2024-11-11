@@ -8,21 +8,17 @@
 
 {% block content %}
 <div class="form-eliminar-hospital">
-    <form action="{{ url_for('eliminar_hospital') }}" enctype="multipart/form-data">
+    <form action="{{ url_for('eliminar_hospital', hospital_id=hospital_id) }}" method="POST">
         <div class="form-header">
-
-            <!-- Contenedor de campos del formulario -->
             <div class="form-fields">
                 <div class="input-group">
-                    <label for="nombre">¿Está seguro de que desea eliminar el hospital?:</label>
+                    <label for="nombre">¿Está seguro de que desea eliminar este hospital?</label>
                 </div>
 
                 <button type="submit" class="btn-submit">Sí</button>
-                <button type="submit" class="btn-submit">No</button>
+                <a href="{{ url_for('catalogo_hospitales') }}" class="btn-submit">No</a> <!-- Redirige al catálogo sin eliminar -->
             </div>
         </div>
-
-        
     </form>
 </div>
 {% endblock %}
