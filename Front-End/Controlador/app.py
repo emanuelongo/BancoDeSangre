@@ -7,7 +7,9 @@ from insertar import insertar_usuario
 from validar import validar_usuario
 from hospital import crear_hospital, obtener_hospitales,  obtener_hospital_por_id
 
-from solicitudes import crear_solicitud
+from solicitudes import crear_solicitud, obtener_solicitud
+from datetime import datetime
+
 
 
 app = Flask(__name__, static_folder='../static', template_folder="../templates")
@@ -20,7 +22,7 @@ def inicio():
     return render_template("IniciarSesion.html")
 
 @app.route("/inicioSesion", methods=["POST"])
-def inicio_sesion():    
+def inicio_sesion():
     correo = request.form.get("correo")
     contraseña = request.form.get("contraseña")
     
@@ -34,20 +36,27 @@ def inicio_sesion():
         return redirect(url_for("menu_admin"))  
     
     # Para otros usuarios
-    exito, mensaje = validar_usuario(correo, contraseña)
+    exito, mensaje, tipo_usuario = validar_usuario(correo, contraseña)
     
     if exito:
-            return "¡BIENVENIDO!"
+        if tipo_usuario == "solicitante":
+            # Redirigir a la página de menú solicitante
+            return redirect(url_for("menu_solicitante"))
+        else:
+            # Redirigir a la página de menú usuario (o cualquier otra según sea el caso)
+            return redirect(url_for("menu_usuario"))
     else:
-            return f"Error en el registro: {mensaje}"
+        # Mostrar el mensaje de error
+        flash(f"Error en el registro: {mensaje}", "error")
+        return redirect(url_for("inicio"))
 
-@app.route('/menu_admin')
+@app.route("/menu_admin")
 def menu_admin():
     return render_template("MenuAdmi.html")
 
-@app.route('/menu_usuario')
-def menu_usuario():
-    return render_template("MenuUsuario.html") 
+@app.route("/menu_solicitante")
+def menu_solicitante():
+    return render_template("MenuSolicitante.html")
 
 num_hospital=0
 
@@ -93,8 +102,12 @@ def agregar_hospital():
 
 @app.route('/catalogo_hospitales')
 def catalogo_hospitales():
-    hospitales = obtener_hospitales()  # Obtiene la lista de hospitales
+    hospitales = obtener_hospitales()  
     return render_template('CatalogoHospitales.html', hospitales=hospitales)
+
+@app.route('/gestionar_hospitales')
+def gestionar_hospitales():
+    return render_template("GestionHospitales.html") 
 
 
 
@@ -108,15 +121,12 @@ def ver_hospital(hospital_id):
         return redirect(url_for("catalogo_hospitales")) 
 
 
-@app.route('/gestionar_hospitales', methods=["GET", "POST"])
-def gestionar_hospitales():
-    return render_template("GestionHospitales.html", hospitales =  hospitales) 
 
+from flask import Flask, request, redirect, url_for, flash, render_template
 
 @app.route('/agregar_solicitud', methods=["GET", "POST"])
 def agregar_solicitud_route():
     if request.method == "POST":
-        
         tipo_sangre = request.form.get('tipo_sangre')
         cantidad_sangre = request.form.get('cantidad_sangre')
         numero_contacto = request.form.get('numero_contacto')
@@ -125,23 +135,87 @@ def agregar_solicitud_route():
         direccion = request.form.get('direccion')
         informacion_adicional = request.form.get('informacion_adicional')
 
-        
-        exito, mensaje = crear_solicitud(tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional )
+        exito, mensaje = crear_solicitud(tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional)
         
         if exito:
-            return redirect(url_for('agregar_solicitudes'))
-    else:
-        return f"Error: {mensaje}"
+            flash(mensaje, "success")
+        else:
+            flash(mensaje, "error")
+        
+        return redirect(url_for("solicitud"))
+    
+    return render_template("AgregarSolicitudes.html")
+
 
 
 @app.route('/agregar_solicitudes')
 def agregar_solicitud():
     return render_template("AgregarSolicitudes.html")
 
+
+
+
+
+
+
 @app.route('/solicitudes')
-def solicitudes():
-    return render_template("solicitudes.html")
- # Muestra el formulario de agregar hospital
+def solicitud():
+    solicitudes = obtener_solicitud()
+
+    # Convertir las solicitudes a una lista de diccionarios más legibles
+    solicitudes_formateadas = []
+
+    for solicitud in solicitudes:
+        # Obtener la fecha y la hora
+        fecha = solicitud[3]
+        hora = solicitud[4]
+
+        try:
+            # Verificar si la fecha es un objeto datetime.date
+            if isinstance(fecha, datetime.date):
+                fecha = fecha.strftime('%Y-%m-%d')  # Convertir a string
+            else:
+                print(f"Error: La fecha no es un objeto datetime.date. Es {type(fecha)}")
+                fecha = str(fecha)  # Convertir a string de seguridad
+
+            # Verificar si la hora es un objeto datetime.time
+            if isinstance(hora, datetime.time):
+                hora = hora.strftime('%H:%M')  # Convertir a string
+            else:
+                print(f"Error: La hora no es un objeto datetime.time. Es {type(hora)}")
+                hora = str(hora)  # Convertir a string de seguridad
+
+        except Exception as e:
+            print(f"Error al procesar fecha y hora: {e}")
+            fecha = str(fecha)
+            hora = str(hora)
+
+        # Crear el diccionario con los datos procesados
+        solicitud_dict = {
+            'tipo_sangre': solicitud[0],
+            'cantidad': str(solicitud[1]),  # Convertir Decimal a string
+            'contacto': solicitud[2],
+            'fecha': fecha,
+            'hora': hora,
+            'direccion': solicitud[5],
+            'informacion_adicional': solicitud[6]
+        }
+        solicitudes_formateadas.append(solicitud_dict)
+
+    print("Solicitudes formateadas:", solicitudes_formateadas)  # Verificar los datos antes de enviarlos
+
+    return render_template('solicitudes.html', solicitudes=solicitudes_formateadas)
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 

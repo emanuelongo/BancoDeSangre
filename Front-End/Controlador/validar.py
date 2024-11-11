@@ -3,29 +3,27 @@ from psycopg2 import sql
 
 def validar_usuario(email, password):
     try:
-        # Crea una conexión a la base de datos
         conn = obtener_conexion()
         with conn.cursor() as cur:
-            # Consulta el usuario por su correo electrónico
+            # Consulta el usuario por su correo electrónico y tipo de usuario
             cur.execute(
-                sql.SQL("SELECT password FROM usuarios WHERE email = %s"),
+                sql.SQL("SELECT password, tipo_usuario FROM usuarios WHERE email = %s"),
                 (email,)
             )
             resultado = cur.fetchone()
         
         # Si no se encontró el usuario
         if resultado is None:
-            return False, "Usuario no encontrado." 
-        
-        # Compara la contraseña proporcionada con la almacenada en la base de datos
+            return False, "Usuario no encontrado.", None 
         if resultado[0] == password:
-            return True, "Inicio de sesión exitoso."
+            tipo_usuario = resultado[1]  # Obtenemos el tipo de usuario
+            return True, "Inicio de sesión exitoso.", tipo_usuario
         else:
-            return False, "Contraseña incorrecta."
+            return False, "Contraseña incorrecta.", None
     
     except Exception as e:
         print(f"Error al validar el usuario: {e}")
-        return False, "Error en la validación."
+        return False, "Error en la validación.", None
     
     finally:
         conn.close()
