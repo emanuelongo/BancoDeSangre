@@ -86,5 +86,15 @@ def eliminar_campaña(id):
         if conn:
             conn.close()
 
-
-
+def editar_campañas(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, Realizada = False):
+    try:
+        conn = obtener_conexion()
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("UPDATE campaña SET nombre = %s, nombre_campaña = %s, cantidad_donantes = %s, objetivo = %s, contacto = %s, fecha = %s, direccion = %s, horario = %s WHERE nombre = %s" ), (nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario, nombre))
+            conn.commit() 
+        print(f"Campaña editada correctamente.")
+    except Exception as e:
+        print(f"Error al editar la campaña: {e}")
+    finally:
+        if conn:
+            conn.close()

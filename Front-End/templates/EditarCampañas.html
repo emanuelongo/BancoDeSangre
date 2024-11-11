@@ -3,81 +3,62 @@
 {% block title %}Editar campaña{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/EditarHospital.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/EditarCampaña.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="form-editar-hospital">
-    <form action="{{ url_for('editar_hospital') }}" enctype="multipart/form-data" method="POST">
+<div class="form-editar-campaña">
+    <form action="{{ url_for('editar_campaña') }}" enctype="multipart/form-data" method="POST">
         <div class="form-header">
-            <div class="input-group image-container">
-                <label for="imagen">Imagen del hospital:</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" onchange="previewImage(event)">
-                <div class="image-preview" id="imagePreview">
-                    <img src="" alt="Vista previa de la imagen" class="image-preview__image">
-                    <span class="image-preview__default-text">Vista previa de la imagen</span>
-                </div>
-            </div>
-
+            
             <!-- Contenedor de campos del formulario -->
             <div class="form-fields">
                 <div class="input-group">
-                    <label for="nombre">Nombre del hospital:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="">
+                    <label for="nombre_campaña">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                </div>
+
+
+                <div class="input-group">
+                    <label for="nombre_campaña">Nombre de la campaña:</label>
+                    <input type="text" id="nombre_campaña" name="nombre_campaña" placeholder="Nombre de la campaña" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" placeholder="">
+                    <label for="cantidad_donantes">Cantidad de donantes requerida:</label>
+                    <input type="number" id="cantidad_donantes" name="cantidad_donantes" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="contacto">Contacto:</label>
-                    <input type="text" id="contacto" name="contacto" placeholder="">
+                    <label for="objetivo">Objetivo de la campaña:</label>
+                    <textarea id="objetivo" name="objetivo" rows="3" placeholder="Objetivo de la campaña" required></textarea>
                 </div>
 
                 <div class="input-group">
-                    <label for="horario">Horario de atención:</label>
-                    <input type="text" id="horario" name="horario" placeholder="">
+                    <label for="contacto">Información de contacto:</label>
+                    <input type="text" id="contacto" name="contacto" placeholder="Contacto" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="estado">Estado del hospital:</label>
-                    <select id="estado" name="estado" required>
-                        <option value="habilitado">Habilitado</option>
-                        <option value="deshabilitado">Deshabilitado</option>
-                    </select>
+                    <label for="fecha">Fecha de la campaña:</label>
+                    <input type="date" id="fecha" name="fecha" required>
                 </div>
 
-                <button type="submit" class="btn-submit">Editar Hospital</button>
+                <div class="input-group">
+                    <label for="direccion">Dirección del evento:</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="horario">Horario del evento:</label>
+                    <input type="text" id="horario" name="horario" placeholder="Horario" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Editar Campaña</button>
             </div>
         </div>
 
         
     </form>
 </div>
-
-
-
-<script>
-    function previewImage(event) {
-        const imagePreview = document.getElementById('imagePreview');
-        const previewImage = imagePreview.querySelector('.image-preview__image');
-        const defaultText = imagePreview.querySelector('.image-preview__default-text');
-
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.setAttribute('src', e.target.result);
-                imagePreview.style.display = 'block';
-                defaultText.style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        } else {
-            previewImage.setAttribute('src', '');
-            defaultText.style.display = 'block';
-        }
-    }
-</script>
 {% endblock %}

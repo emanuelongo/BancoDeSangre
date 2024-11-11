@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import psycopg2
-from campaña import crear_campana
+from campaña import crear_campana, editar_campañas
 from campaña import obtener_campañas, obtener_campaña, eliminar_campaña
  
 from insertar import insertar_usuario
@@ -331,8 +331,23 @@ def eliminar_campañas(id):
 
 
 
-@app.route('/editar_campañas', methods=["GET"])
-def editar_campañas():
+@app.route('/editar_campaña', methods=["GET", "POST"])
+def editar_campaña():
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        nombre_campaña = request.form.get('nombre_campaña')
+        cantidad_donantes = request.form.get('cantidad_donantes')
+        objetivo = request.form.get('objetivo')
+        contacto = request.form.get('contacto')
+        fecha = request.form.get('fecha')
+        direccion = request.form.get('direccion')
+        horario = request.form.get('horario')
+        
+        editar_campañas(nombre, nombre_campaña, cantidad_donantes, objetivo, contacto, fecha, direccion, horario)
+        
+        
+        return redirect(url_for('gestionar_campañas'))  
+  
     return render_template("EditarCampañas.html")
 
 @app.route('/ver_disponibilidad', methods=["GET"])
