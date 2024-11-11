@@ -9,17 +9,21 @@
 {% block content %}
 <div class="container">
     {% for hospital in hospitales %}
-    <div class="card">
-        <a href="{{ url_for('ver_hospital', hospital_id=hospital.id) }}">
-            <figure>
-                <img src="{{ url_for('static', filename='img/Hospital1.jpg') }}" alt="Imagen del hospital">
-            </figure>
-            <div class="contenido">
-                <h3>{{ hospital.Nombre }}</h3>
-                <p>{{ hospital.Direccion }}</p>
-                <p>{{ hospital.Contacto }}</p>
-            </div>
-        </a>
+    <div class="sidebar">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='img/Hospital2.jpg') }}" alt="Imagen del hospital">
+        </div>
+    </div>
+    
+    <div class="main-content">
+      <h1>{{ hospital["Nombre"] }}</h1> 
+      <h2>Dirección:</h2> <p>{{ hospital["Direccion"] }}</p>
+      <h2>Contacto:</h2> <p>{{ hospital["Contacto"] }}</p>
+      <h2>Horario de atención:</h2> <p>{{ hospital["Horario"] }}</p>
+      <h2>Estado:</h2> <p>{{ hospital["Estado"] }}</p>
+    </div>
+    
+    <a href="{{ url_for('ver_disponibilidad') }}" class="buttons">Ver disponibilidad de sangre</a>
         <a href="{{ url_for('editar_hospital', hospital_id=hospital.id) }}" class="btn-edit-hospital">✏️</a>
         <a href="{{ url_for('eliminar_hospital', hospital_id=hospital.id) }}" class="btn-delete-hospital">❌</a>
     </div>
