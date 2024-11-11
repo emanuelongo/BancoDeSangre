@@ -60,6 +60,37 @@ def obtener_hospital_por_id(hospital_id):
     finally:
         conn.close()
 
+def eliminar_hospital_por_id(hospital_id):
+    try:
+        conn = obtener_conexion()
+        with conn.cursor() as cur:
+            cur.execute(
+                sql.SQL("DELETE FROM hospital WHERE id = %s"),
+                (hospital_id,)
+            )
+            conn.commit()
+            return True, "Hospital eliminado con éxito."
+    except Exception as e:
+        print(f"Error al eliminar el hospital: {e}")
+        return False, "Error al eliminar el hospital."
+    finally:
+        conn.close()
 
+
+def actualizar_hospital(hospital_id, nombre, direccion, contacto, horario, estado):
+    try:
+        conn = obtener_conexion()
+        with conn.cursor() as cur:
+            cur.execute(
+                sql.SQL("UPDATE hospital SET nombre = %s, direccion = %s, contacto = %s, horario = %s, estado = %s WHERE id = %s"),
+                (nombre, direccion, contacto, horario, estado, hospital_id)
+            )
+            conn.commit()
+            return True, "Hospital actualizado con éxito."
+    except Exception as e:
+        print(f"Error al actualizar hospital: {e}")
+        return False, "Error al actualizar hospital."
+    finally:
+        conn.close()
 
 

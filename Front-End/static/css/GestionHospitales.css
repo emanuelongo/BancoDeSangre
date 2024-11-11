@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+.body {
+    background-color: #BA181B;
+}
+
+/* Estilos generales */
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+
+.carousel-inner { 
+    display: flex; 
+    overflow-x: auto; 
+    scroll-snap-type: x obligatorio; 
+     scroll-snap-align: start; }
+
+.card {
+    margin: 5px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    object-fit: cover;
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+}
+
+.contenido {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+
+/* Estilo para el botón de eliminar */
+.btn-delete-hospital {
+    margin-top: 15px; /* Espaciado superior para que no quede pegado a la tarjeta */
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+/* Efecto de hover para el botón de eliminar */
+.btn-delete-hospital:hover {
+    background-color: #c82333;
+}
+
+
+
+
+
+.contenido h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contenido p {
+    color: #666;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        margin: 10px 0; 
+    }
+}
+
+/* Encabezado */
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px 2%;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links li {
+    position: relative; 
+}
+
+.header .nav-links li a {
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li {
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover {
+    background-color: #f1f1f1;
+}
+
+.header .nav-links li:hover .submenu {
+    display: block;
+}
+
+.header .perfil {
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    height: 80px;
+    width: auto;
+}
+
+
+/* Estilo para el botón "Agregar" */
+.btn-agregar {
+    position: fixed;
+    bottom: 100px; /* Distancia desde la parte inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el botón horizontalmente */
+    padding: 100px 100px; /* Aumenta el tamaño del botón */
+    background-color: #BA181B; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que el botón esté siempre por encima del contenido */
+}
+
+/* Estilo para el botón de editar */
+.btn-edit-hospital {
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s;
+    flex: 1; /* Hace que los botones ocupen el mismo espacio */
+}
+
+/* Efecto de hover para el botón de editar */
+.btn-edit-hospital:hover {
+    background-color: #0056b3;
+}
