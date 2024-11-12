@@ -286,22 +286,19 @@ def eliminar_hospital(hospital_id):
 #EDITAR HOSPITAL
 @app.route('/editar_hospital/<int:hospital_id>', methods=["GET", "POST"])
 def editar_hospital(hospital_id):
-    # Obtén el hospital por su ID
     hospital = obtener_hospital_por_id(hospital_id)
     
     if hospital is None:
         flash("El hospital no existe", "error")
-        return redirect(url_for('catalogo_hospitales'))  # Redirige si no se encuentra el hospital
+        return redirect(url_for('catalogo_hospitales'))  
     
     if request.method == "POST":
-        # Actualiza los campos del hospital
         nombre = request.form.get('nombre')
         direccion = request.form.get('direccion')
         contacto = request.form.get('contacto')
         horario = request.form.get('horario')
         estado = request.form.get('estado')
         
-        # Llama a la función para actualizar el hospital en la base de datos
         exito, mensaje = actualizar_hospital(hospital_id, nombre, direccion, contacto, horario, estado)
         
         if exito:
@@ -309,7 +306,7 @@ def editar_hospital(hospital_id):
         else:
             flash(mensaje, "error")
         
-        return redirect(url_for('catalogo_hospitales'))  # Redirige al catálogo de hospitales
+        return redirect(url_for('catalogo_hospitales')) 
     
     return render_template("EditarHospitales.html", hospital=hospital)
 #---------------------------------------------------------------------------------------------------------
@@ -427,13 +424,16 @@ def registrar():
         
         # Devuelve mensaje de éxito o error
         if exito:
-            return "¡Registro exitoso!"
+            return redirect(url_for('iniciar_sesion'))
         else:
             return f"Error en el registro: {mensaje}"
     else:
         # Si es GET, muestra el formulario de registro
         return render_template('Registrarse.html')
 
+@app.route('/iniciar_sesion')
+def iniciar_sesion():
+    return render_template('IniciarSesion.html')
 
 
 if __name__ == "__main__":
