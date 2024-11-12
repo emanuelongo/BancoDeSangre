@@ -2,6 +2,11 @@
 
 {% block title %}Editar Hospital{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/EditarHospital.css') }}">
+{% endblock %}
+
+
 {% block content %}
 <div class="container">
     <h2>Editar Hospital</h2>
@@ -26,7 +31,7 @@
             <label for="estado">Estado</label>
             <input type="text" class="form-control" id="estado" name="estado" value="{{ hospital['Estado'] }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" class="btn_guardar">Guardar Cambios</button>
     </form>
 </div>
 {% endblock %}
