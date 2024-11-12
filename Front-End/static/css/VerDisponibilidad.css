@@ -27,8 +27,9 @@ body{
     padding:0;
 }
 .navbar .logo{
-    width: 20vw;
-    object-fit: contain;
+    width: 15vw;
+    object-fit: cover;
+    overflow: hidden;
     
 }
 .navbar .admin{
@@ -57,7 +58,7 @@ body{
     display: flex;
     color:#dd2222;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: 500;
     padding: 20px 20 px auto;
     white-space: nowrap;
