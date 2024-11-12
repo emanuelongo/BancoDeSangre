@@ -428,7 +428,7 @@ def registrar():
         else:
             return f"Error en el registro: {mensaje}"
     else:
-        # Si es GET, muestra el formulario de registro
+        # Si es GET, muestra el formulario de registroO
         return render_template('Registrarse.html')
 
 @app.route('/iniciar_sesion')
