@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/EliminarSolicitud.css') }}">
+    <title>Realizar Solicitud de Sangre</title>
+</head>
+
+<body>
+   <!-- Navbar -->
+   <header class="header">
+      <div class="logo">
+         <img src="{{ url_for('static', filename='img/BancoSangre.jpeg') }}" alt="logo del sistema">
+      </div>
+      <nav>
+         <ul class="nav-links">
+            <li><a href="#"> Gestión de solicitudes</a>
+                <ul class="submenu">
+                    <li><a href="{{ url_for('agregar_solicitud') }}">Realizar una solicitud</a></li>
+                    <li><a href="{{ url_for('gestionar_hospitales') }}">Cancelar una solicitud</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url_for('solicitud') }}">Mis solicitudes</a></li>
+         </ul>
+      </nav>
+      <div class="perfil">
+         <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="perfil administrador">
+         <p>solicitante</p>
+      </div>
+   </header>
+
+
+
+
+<div class="form-eliminar-hospital">
+    <form action="{{ url_for('eliminar_hospital', hospital_id=hospital_id) }}" method="POST">
+        <div class="form-header">
+            <div class="form-fields">
+                <div class="input-group">
+                    <label for="nombre">¿Está seguro de que desea eliminar este hospital?</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Sí</button>
+                <a href="{{ url_for('catalogo_hospitales') }}" class="btn-submit">No</a> <!-- Redirige al catálogo sin eliminar -->
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

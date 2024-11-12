@@ -7,7 +7,9 @@ from insertar import insertar_usuario
 from validar import validar_usuario
 from hospital import crear_hospital, obtener_hospitales,  obtener_hospital_por_id, actualizar_hospital, eliminar_hospital_por_id
 
-from solicitudes import crear_solicitud, obtener_solicitud
+from solicitudes import crear_solicitud, obtener_solicitudes 
+from solicitudes import obtener_solicitud, cancelar_solicitud
+
 from datetime import datetime
 
 
@@ -137,7 +139,8 @@ def agregar_solicitud_route():
         exito, mensaje = crear_solicitud(tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional)
         
         if exito:
-            flash(mensaje, "success")
+            pass
+            #flash(mensaje, "success")
         else:
             flash(mensaje, "error")
         
@@ -157,17 +160,21 @@ def agregar_solicitud():
 
 
 
+
+
+
+
 @app.route('/solicitudes')
 def solicitud():
-    solicitudes = obtener_solicitud()
+    solicitudes = obtener_solicitudes()
 
     # Convertir las solicitudes a una lista de diccionarios más legibles
     solicitudes_formateadas = []
 
     for solicitud in solicitudes:
         # Obtener la fecha y la hora
-        fecha = solicitud[3]
-        hora = solicitud[4]
+        fecha = solicitud[4]
+        hora = solicitud[5]
 
         try:
             # Verificar si la fecha es un objeto datetime.date
@@ -191,19 +198,51 @@ def solicitud():
 
         # Crear el diccionario con los datos procesados
         solicitud_dict = {
-            'tipo_sangre': solicitud[0],
-            'cantidad': str(solicitud[1]),  # Convertir Decimal a string
-            'contacto': solicitud[2],
+            'tipo_sangre': solicitud[1],
+            'cantidad': str(solicitud[2]),  # Convertir Decimal a string
+            'contacto': solicitud[3],
             'fecha': fecha,
             'hora': hora,
-            'direccion': solicitud[5],
-            'informacion_adicional': solicitud[6]
+            'direccion': solicitud[6],
+            'informacion_adicional': solicitud[7]
         }
         solicitudes_formateadas.append(solicitud_dict)
 
     print("Solicitudes formateadas:", solicitudes_formateadas)  # Verificar los datos antes de enviarlos
 
     return render_template('solicitudes.html', solicitudes=solicitudes_formateadas)
+
+
+
+
+from flask import request, redirect, url_for, render_template
+@app.route('/eliminar_solicitudes/<int:id>', methods=['GET', 'POST'])
+def eliminar_solicitudes(id):
+    try:
+        solicitud = obtener_solicitud(id)
+        
+        if solicitud is None:
+            return redirect(url_for('ver_solicitudes')) 
+        
+        if request.method == 'POST':
+            eliminar_campaña(id)
+            return redirect(url_for('ver_solicitudes')) 
+        
+        return render_template("EliminarSolicitudess.html", solicitud=solicitud)
+    
+    except Exception as e:
+        print(f"Error al eliminar la solicitud: {e}")
+        flash("Hubo un error al eliminar la solicitud.", "error")
+        return redirect(url_for('ver_solicitudes'))
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,6 +16,7 @@ def crear_solicitud(tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicit
                 (tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional)
             )
             conn.commit()
+            
         
         return True, "Solicitud agregada con éxito."
         
@@ -27,22 +28,60 @@ def crear_solicitud(tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicit
         if conn:
             conn.close()
 
-def obtener_solicitud():
-    conn = None
+def obtener_solicitudes():
     try:
-        conn = obtener_conexion()
-        if not conn:
-            return [], "No se pudo conectar a la base de datos."
-        
+        conn = obtener_conexion()  
         with conn.cursor() as cur:
-            cur.execute(sql.SQL("SELECT tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional FROM solicitud"))
-            solicitudes = cur.fetchall()
-            return solicitudes, "Solicitudes obtenidas con éxito."
-    
+            cur.execute("""
+                SELECT ID, tipo_sangre, cantidad_sangre, numero_contacto, fecha_solicitud, hora_solicitud, direccion, informacion_adicional FROM solicitud
+            """)
+            solicitudes = cur.fetchall() 
+            
+            if solicitudes:
+                for solicitud in solicitudes:
+                    print(f"ID:{solicitud[0]}, tipo_sangre: {solicitud[1]}, cantidad_sangre: {solicitud[2]}, "
+                          f"numero_contacto: {solicitud[3]}, fecha_solicitud: {solicitud[4]}, "
+                          f"hora_solicitud: {solicitud[5]}, direccion: {solicitud[6]}, "
+                          f"informacion_adicional: {solicitud[7]}")
+            else:
+                print("No se encontraron solicitudes.")
+            
+            return solicitudes
+        
     except Exception as e:
         print(f"Error al obtener las solicitudes: {e}")
         return [], f"Error al obtener las solicitudes: {e}"
     
+    finally:
+        if conn:
+            conn.close()
+
+            
+def obtener_solicitud(id):
+    try:
+        conn = obtener_conexion()
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("SELECT * FROM campaña WHERE id = %s"), (id,))
+            return cur.fetchone() 
+    
+    except Exception as e:
+        print(f"Error al obtener el campaña: {e}")
+        return None
+    
+    finally:
+        conn.close()
+        
+
+
+def cancelar_solicitud(id):
+    try:
+        conn = obtener_conexion()
+        with conn.cursor() as cur:
+            cur.execute(sql.SQL("DELETE FROM campaña WHERE id = %s"), (id,))
+            conn.commit() 
+        print(f"Campaña con id {id} eliminada correctamente.")
+    except Exception as e:
+        print(f"Error al eliminar la campaña: {e}")
     finally:
         if conn:
             conn.close()
