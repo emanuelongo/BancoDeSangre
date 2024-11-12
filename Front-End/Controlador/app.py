@@ -154,6 +154,16 @@ def agregar_solicitud_route():
 def agregar_solicitud():
     return render_template("AgregarSolicitudes.html")
 
+@app.route('/campaña_donante')
+def campaña_donante():
+    campañas_activas = obtener_campañas() 
+    return render_template("CampañasDonante.html", campañas_activas=campañas_activas)
+
+
+@app.route('/solicitudes_donante')
+def solicitudes_donante():
+    return render_template("CampañasDonante.html")
+
 
 
 

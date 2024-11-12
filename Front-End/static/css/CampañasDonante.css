@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background-color: #BA181B;
+    background: linear-gradient(to bottom, #c71b1e, #6f0101); 
+    min-height: 100vh;  
+    margin: 0;  
+    padding: 0;  
+}
+
+a {
+    text-decoration: none; 
+}
+
+
+
+.header 
+{
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 10px 2%;
+}
+
+.header .logo img 
+{
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links 
+{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links li 
+{
+    position: relative; 
+}
+
+.header .nav-links li a 
+{
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu 
+{
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li 
+{
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a
+{
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover 
+{
+    background-color: #f1f1f1;
+}
+
+.header .nav-links li:hover .submenu 
+{
+    display: block;
+}
+
+
+.header .perfil 
+{
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img 
+{
+    height: 80px;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+.main-content {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+ 
+.contenido h3 
+{
+    justify-content: center;
+
+    display: flex;
+    color: #000000; 
+    margin-bottom: 30px; 
+    white-space: nowrap; 
+}
+
+.contenido p 
+{
+    justify-content: center;
+    display: flex;
+}
+
+
+h1 
+{
+    text-align: left ;
+    color: #ffffff; 
+    margin-left: 20px;
+    margin-bottom: 30px; 
+    white-space: nowrap; 
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+.campañas {
+    width: 100%;
+    max-width: 350px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+
+.campañas:hover 
+{
+    background-color: #bfbfbf;
+    transform: scale(1.05);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.campañas:active 
+{
+    transform: scale(0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+
+
+.rojo {
+    color: red;
+}
+
+.negro {
+    color: black;
+}
