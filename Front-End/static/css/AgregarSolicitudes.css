@@ -187,13 +187,11 @@ textarea {
     resize: none;
 }
 
-/* Ajuste de altura para textarea */
 textarea {
     height: 90px;
     padding: 10px;
 }
 
-/* Efecto de enfoque */
 input:focus,
 select:focus,
 textarea:focus {
@@ -204,12 +202,13 @@ textarea:focus {
 
 /* Botón Enviar */
 button {
-    width: 100%;
+    width: 90%;
+    margin-left: 20px;
     padding: 12px;
     background-color: #BA181B;
     color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
