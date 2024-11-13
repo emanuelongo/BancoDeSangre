@@ -91,5 +91,73 @@ nav a {
 .donante-btn {
     display:flex;
     justify-content: space-between;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    align-items: center;
+}
+.welcome {
+    padding: 2rem;
+    text-align: center;
+}
 
+.welcome h2 {
+    color: #b30000;
+    font-size:3rem;
+    margin-bottom: 1.5rem;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.image-container img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 400px;
+    height: auto;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.info-cards {
+    background-color: #fff;
+    display: flex;
+    gap: 1rem;
+}
+
+.card {
+    background-color: #b30000;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 600px;
+    height: auto;
+    text-align: left;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+.card h3 {
+    font-size: 2.7rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.card p {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    text-align: left;
+}
+.card p {
+    font-size: 1.8rem;
+    line-height: 1.4;
 }
