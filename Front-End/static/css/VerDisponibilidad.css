@@ -1,17 +1,116 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
 }
+
 body{
-    background-image: url("{{ url_for('static', filename='img/fondo.png') }}");
+    background-image:url(../img/fondo.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 10px 2%;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links li {
+    position: relative; 
+}
+
+.header .nav-links li a {
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li {
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostrar submenú al pasar el ratón */
+.header .nav-links li:hover .submenu {
+    display: block;
+}
+
+
+.header .perfil {
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    height: 80px;
+    width: auto;
+}
+
+.sidebar {
+    width: 500px;
+    height: calc(100vh - 85px); /* Altura completa menos la altura del navbar */
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 85px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 500px;
+    height: 450px;
+    margin-left: 200px;
+    border-radius: 5%;
+
+}
+
+
 
 .header{
     padding:20px;
@@ -27,8 +126,9 @@ body{
     padding:0;
 }
 .navbar .logo{
-    width: 20vw;
-    object-fit: contain;
+    width: 19vw;
+    object-fit: cover;
+    overflow: hidden;
     
 }
 .navbar .admin{
@@ -57,7 +157,7 @@ body{
     display: flex;
     color:#dd2222;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 500;
     padding: 20px 20 px auto;
     white-space: nowrap;
