@@ -131,10 +131,12 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    width: 400px;
+    width: 600px;
     max-width: 90%;
     margin: 90px;
-    margin-left: 550px;
+    margin-left: 500px;
+    align-items: center;
+
 
     
 }
@@ -152,9 +154,11 @@ h2 {
 label {
     display: block;
     margin-bottom: 6px;
+    margin-left: 20px;
     font-weight: bold;
     color: #666;
     font-size: 15px;
+    align-items: center;
 }
 
 
@@ -170,9 +174,10 @@ input[type="number"],
 select,
 textarea {
     display: block;
-    width: 100%;
+    width: 90%;
     height: 45px;
     padding: 10px;
+    margin-left: 20px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
