@@ -77,11 +77,11 @@ def cancelar_solicitud(id):
     try:
         conn = obtener_conexion()
         with conn.cursor() as cur:
-            cur.execute(sql.SQL("DELETE FROM campaña WHERE id = %s"), (id,))
+            cur.execute(sql.SQL("DELETE FROM solicitud WHERE id = %s"), (id,))
             conn.commit() 
-        print(f"Campaña con id {id} eliminada correctamente.")
+        print(f"solicitud con id {id} eliminada correctamente.")
     except Exception as e:
-        print(f"Error al eliminar la campaña: {e}")
+        print(f"Error al eliminar la solicitud: {e}")
     finally:
         if conn:
             conn.close()

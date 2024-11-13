@@ -154,6 +154,8 @@ def agregar_solicitud_route():
 def agregar_solicitud():
     return render_template("AgregarSolicitudes.html")
 
+
+
 @app.route('/campaña_donante')
 def campaña_donante():
     campañas_activas = obtener_campañas() 
@@ -163,6 +165,12 @@ def campaña_donante():
 @app.route('/solicitudes_donante')
 def solicitudes_donante():
     return render_template("CampañasDonante.html")
+
+@app.route('/deseo_donar', methods=['GET', 'POST'])
+def deseo_donar():
+    if request.method == 'POST':
+        pass
+    return render_template("DeseoDonar.html")
 
 
 
@@ -228,6 +236,7 @@ def solicitud():
 from flask import request, redirect, url_for, render_template
 @app.route('/eliminar_solicitudes/<int:id>', methods=['GET', 'POST'])
 def eliminar_solicitudes(id):
+    
     try:
         solicitud = obtener_solicitud(id)
         
@@ -247,6 +256,29 @@ def eliminar_solicitudes(id):
 
 
 
+
+
+@app.route('/eliminar_solicitud', methods=['GET', 'POST'])
+def eliminar_solicitud():
+    
+    solicitudes= obtener_solicitudes()
+    return render_template("EliminarSolicitud.html", solicitudes= solicitudes)
+
+
+
+
+@app.route('/eliminar_una_solicitud , <int:solicitud_id>', methods=['GET', 'POST']) #eliminar una solicitud solicitante
+def eliminar_una_solicitud(solicitud_id):
+    
+    
+    if request.method == 'POST':
+        
+        cancelar_solicitud(solicitud_id) 
+        return redirect(url_for('eliminar_solicitud'))
+    
+
+    
+    return render_template("EliminarunaSolicitud.html", solicitud_id= solicitud_id)
 
 
 

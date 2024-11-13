@@ -18,7 +18,7 @@
             <li><a href="#"> Gestión de solicitudes</a>
                 <ul class="submenu">
                     <li><a href="{{ url_for('agregar_solicitud') }}">Realizar una solicitud</a></li>
-                    <li><a href="{{ url_for('gestionar_hospitales') }}">Cancelar una solicitud</a></li>
+                    <li><a href="{{ url_for('eliminar_solicitud') }}">Cancelar una solicitud</a></li>
                 </ul>
             </li>
             <li><a href="{{ url_for('solicitud') }}">Mis solicitudes</a></li>
@@ -33,18 +33,43 @@
 
 
 
-<div class="form-eliminar-hospital">
-    <form action="{{ url_for('eliminar_hospital', hospital_id=hospital_id) }}" method="POST">
-        <div class="form-header">
-            <div class="form-fields">
-                <div class="input-group">
-                    <label for="nombre">¿Está seguro de que desea eliminar este hospital?</label>
-                </div>
 
-                <button type="submit" class="btn-submit">Sí</button>
-                <a href="{{ url_for('catalogo_hospitales') }}" class="btn-submit">No</a> <!-- Redirige al catálogo sin eliminar -->
+
+   <div class="container">
+    <h2>Solicitudes pendientes</h2>
+
+    <!-- Mostrar mensajes flash (de éxito o error) aquí -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert-container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             </div>
+        {% endif %}
+    {% endwith %}
+
+
+
+    {% if solicitudes %}
+    <div class="solicitudes_list">
+        {%for solicitud in solicitudes%}
+        <div class="solicitud">
+            <p>solicitud de {{solicitud[2]}} litros de sangre del tipo {{solicitud[1]}}, 
+                 fecha: {{solicitud[4]}}, a las {{solicitud[5]}}  direccion: {{solicitud[6]}}</p>
+                <a href="{{ url_for('eliminar_una_solicitud', solicitud_id= solicitud[0]) }}" class="btn-delete-hospital">❌</a>
+
+        
         </div>
-    </form>
+        {%endfor%}
+    </div>
+    {% else %}
+        <p>No hay hospitales disponibles</p>
+
+    {% endif %}
 </div>
-{% endblock %}
+ 
+
+</body>
