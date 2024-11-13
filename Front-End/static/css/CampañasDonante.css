@@ -20,10 +20,7 @@ a {
     text-decoration: none; 
 }
 
-
-
-.header 
-{
+.header {
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
@@ -32,26 +29,22 @@ a {
     padding: 10px 2%;
 }
 
-.header .logo img 
-{
+.header .logo img {
     height: 50px;
     width: auto;
 }
 
-.header .nav-links 
-{
+.header .nav-links {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
-.header .nav-links li 
-{
+.header .nav-links li {
     position: relative; 
 }
 
-.header .nav-links li a 
-{
+.header .nav-links li a {
     font-weight: 700;
     color: #BA181B;
     text-decoration: none;
@@ -59,8 +52,7 @@ a {
     display: block;
 }
 
-.header .nav-links .submenu 
-{
+.header .nav-links .submenu {
     display: none; 
     position: absolute; 
     top: 100%; 
@@ -73,47 +65,32 @@ a {
     z-index: 1000;
 }
 
-.header .nav-links .submenu li 
-{
+.header .nav-links .submenu li {
     padding: 10px;
 }
 
-.header .nav-links .submenu li a
-{
+.header .nav-links .submenu li a {
     color: #333;
     text-decoration: none;
 }
 
-.header .nav-links .submenu li a:hover 
-{
+.header .nav-links .submenu li a:hover {
     background-color: #f1f1f1;
 }
 
-.header .nav-links li:hover .submenu 
-{
+.header .nav-links li:hover .submenu {
     display: block;
 }
 
-
-.header .perfil 
-{
+.header .perfil {
     display: flex;
     align-items: center;
 }
 
-.header .perfil img 
-{
+.header .perfil img {
     height: 80px;
     width: auto;
 }
-
-
-
-
-
-
-
-
 
 .main-content {
     display: flex;
@@ -121,34 +98,27 @@ a {
     justify-content: flex-start;
     margin-left: 10px;
 }
- 
-.contenido h3 
-{
-    justify-content: center;
 
+.contenido h3 {
+    justify-content: center;
     display: flex;
     color: #000000; 
     margin-bottom: 30px; 
     white-space: nowrap; 
 }
 
-.contenido p 
-{
+.contenido p {
     justify-content: center;
     display: flex;
 }
 
-
-h1 
-{
-    text-align: left ;
+h1 {
+    text-align: left;
     color: #ffffff; 
     margin-left: 20px;
     margin-bottom: 30px; 
     white-space: nowrap; 
 }
-
-
 
 .container {
     display: flex;
@@ -156,15 +126,15 @@ h1
     text-align: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    padding: 30px;
     width: 100%;
     border-radius: 10px;
 }
 
-
 .campañas {
     width: 100%;
     max-width: 350px;
+    min-height: 350px; 
     margin: 20px;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -173,39 +143,18 @@ h1
 }
 
 
-.campañas:hover 
-{
+.campañas:hover {
     background-color: #bfbfbf;
     transform: scale(1.05);
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.campañas:active 
-{
+.campañas:active {
     transform: scale(0.95);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
-
-
-
-.container2 {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    border-radius: 10px;
-}
-
-
-
-
 
 .rojo {
     color: red;
@@ -213,4 +162,20 @@ h1
 
 .negro {
     color: black;
+}
+
+.btn-deseo-donar {
+    background-color: #BA181B;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-deseo-donar:hover {
+    background-color: #a11617;
 }
