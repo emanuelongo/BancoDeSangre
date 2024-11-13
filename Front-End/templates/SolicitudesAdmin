@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <a href="{{ url_for('menu_admin') }}"><img src="{{ url_for('static', filename='img/BancoSangre.jpeg') }}" alt="Logo del sistema"></a>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">Mis hospitales</a>
+                <ul class="submenu">
+                    <li><a href="{{ url_for('catalogo_hospitales') }}">Ver hospitales</a></li>
+                    <li><a href="{{ url_for('gestionar_hospitales') }}">Gestión de hospitales</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Mis campañas</a>
+                <ul class="submenu">
+                    <li><a href="{{ url_for('ver_campañas') }}">Ver campañas</a></li>
+                    <li><a href="{{ url_for('gestionar_campañas') }}">Gestionar campañas</a></li>
+                </ul>
+            </li>
+            <li><a href="#{{ url_for('solicitud_admin') }}">Solicitudes</a></li>
+        </ul>
+    </nav>
+
+    <div class="perfil">
+        <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="perfil administrador">
+        <p>administrador</p>
+    </div>
+</header>
+
+
+
+   <!-- Contenido principal -->
+   <div class="main-content">
+      <h1>Solicitudes de sangre</h1>
+      <table border="1">
+         <thead>
+            <tr>
+               <th>Tipo de Sangre</th>
+               <th>Cantidad</th>
+               <th>Contacto</th>
+               <th>Fecha</th>
+               <th>Hora</th>
+               <th>Dirección</th>
+               <th>Información Adicional</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for solicitud in solicitudes %}
+            <tr>
+                <td>{{ solicitud.tipo_sangre }}</td>
+                <td>{{ solicitud.cantidad }}</td>
+                <td>{{ solicitud.contacto }}</td>
+                <td>{{ solicitud.fecha }}</td>
+                <td>{{ solicitud.hora }}</td>
+                <td>{{ solicitud.direccion }}</td>
+                <td>{{ solicitud.informacion_adicional }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">No hay solicitudes disponibles.</td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+</body>
+</html>

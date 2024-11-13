@@ -233,6 +233,57 @@ def solicitud():
 
 
 
+@app.route('/solicitud_admin')
+def solicitud_admin():
+    solicitudes = obtener_solicitudes()
+
+    # Convertir las solicitudes a una lista de diccionarios más legibles
+    solicitudes_formateadas = []
+
+    for solicitud in solicitudes:
+        # Obtener la fecha y la hora
+        fecha = solicitud[4]
+        hora = solicitud[5]
+
+        try:
+            # Verificar si la fecha es un objeto datetime.date
+            if isinstance(fecha, datetime.date):
+                fecha = fecha.strftime('%Y-%m-%d')  # Convertir a string
+            else:
+                print(f"Error: La fecha no es un objeto datetime.date. Es {type(fecha)}")
+                fecha = str(fecha)  # Convertir a string de seguridad
+
+            # Verificar si la hora es un objeto datetime.time
+            if isinstance(hora, datetime.time):
+                hora = hora.strftime('%H:%M')  # Convertir a string
+            else:
+                print(f"Error: La hora no es un objeto datetime.time. Es {type(hora)}")
+                hora = str(hora)  # Convertir a string de seguridad
+
+        except Exception as e:
+            print(f"Error al procesar fecha y hora: {e}")
+            fecha = str(fecha)
+            hora = str(hora)
+
+        # Crear el diccionario con los datos procesados
+        solicitud_dict = {
+            'tipo_sangre': solicitud[1],
+            'cantidad': str(solicitud[2]),  # Convertir Decimal a string
+            'contacto': solicitud[3],
+            'fecha': fecha,
+            'hora': hora,
+            'direccion': solicitud[6],
+            'informacion_adicional': solicitud[7]
+        }
+        solicitudes_formateadas.append(solicitud_dict)
+
+    print("Solicitudes formateadas:", solicitudes_formateadas)  # Verificar los datos antes de enviarlos
+
+    return render_template('SolicitudesAdmin.html', solicitudes_=solicitudes_formateadas)
+
+
+
+
 from flask import request, redirect, url_for, render_template
 @app.route('/eliminar_solicitudes/<int:id>', methods=['GET', 'POST'])
 def eliminar_solicitudes(id):
