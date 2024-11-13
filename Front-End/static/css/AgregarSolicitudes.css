@@ -123,23 +123,18 @@ body {
 }
 
 
-
-
 /* Estilos del formulario */
 .solicitud-container {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    width: 600px;
-    max-width: 90%;
-    margin: 90px;
-    margin-left: 500px;
-    align-items: center;
-
-
-    
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+    transform: translateX(400px); 
 }
+
 
 
 h2 {
