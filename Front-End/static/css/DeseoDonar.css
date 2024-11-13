@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background-color: #BA181B;
+    background: linear-gradient(to bottom, #c71b1e, #6f0101); 
+    min-height: 100vh;  
+    margin: 0;  
+    padding: 0;  
+}
+
+a {
+    text-decoration: none; 
+}
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 10px 2%;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links li {
+    position: relative; 
+}
+
+.header .nav-links li a {
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li {
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover {
+    background-color: #f1f1f1;
+}
+
+.header .nav-links li:hover .submenu {
+    display: block;
+}
+
+.header .perfil {
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    height: 80px;
+    width: auto;
+}
+
+
+.form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+h2 {
+    color: #bf1e2e;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+.form-container .question {
+    margin-bottom: 20px; /* Espacio entre preguntas */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #bf1e2e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #a11d29;
+}
