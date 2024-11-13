@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    text-align: left;
+}
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px 2%;
+    margin-bottom: 50px;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-links li {
+    position: relative; 
+}
+
+.header .nav-links li a {
+    font-weight: 700;
+    color: #BA181B;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.header .nav-links .submenu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px 0;
+    list-style: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    z-index: 1000;
+}
+
+.header .nav-links .submenu li {
+    padding: 10px;
+}
+
+.header .nav-links .submenu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.header .nav-links .submenu li a:hover {
+    background-color: #f1f1f1;
+}
+
+.header .nav-links li:hover .submenu {
+    display: block;
+}
+
+
+.header .perfil {
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    height: 80px;
+    width: auto;
+}
+
+
+
+
+
+
+
+.main-content {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    padding-top: 200px; 
+    width: 100%; 
+}
+
+
+
+.form-eliminar-hospital {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px; 
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 450px; /* Ajusta el ancho aquí */
+    margin: 30px auto; 
+    position: relative; 
+    display: flex; 
+}
+
+.form-header {
+    display: flex; 
+    flex-direction: row-reverse; 
+    align-items: flex-start; 
+    gap: 20px; 
+}
+
+
+
+.form-fields {
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    flex: 1; 
+    margin-left: 50px;
+    align-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block; /* Asegura que el label esté en su propia línea */
+}
+
+
+.botones{
+    display: flex; 
+    flex-direction: row;
+    gap: 15px;
+    justify-content: flex-start;
+
+}
+
+button.btn-submit {
+    background-color: #d50000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin: 0 auto; 
+    display: block;
+}
+
+button.btn-submit:hover {
+    background-color: #BA181B;
+}
+
+
+
+
+
+.btn-cancel {
+    display: inline-block;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #d50000;
+    color: white;   
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #d32f2f; /* Color de fondo cuando pasa el mouse */
+}
+
+
+button.btn-cancel:hover {
+    background-color: #BA181B;
+}

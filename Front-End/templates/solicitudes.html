@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Solicitudes</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/MenuSolicitante.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Solicitudes.css') }}">
 </head>
 <body>
    <!-- Navbar -->
@@ -17,7 +17,7 @@
             <li><a href="#"> Gestión de solicitudes</a>
                 <ul class="submenu">
                     <li><a href="{{ url_for('agregar_solicitud') }}">Realizar una solicitud</a></li>
-                    <li><a href="{{ url_for('gestionar_hospitales') }}">Cancelar una solicitud</a></li>
+                    <li><a href="{{ url_for('eliminar_solicitud') }}">Cancelar una solicitud</a></li>
                 </ul>
             </li>
             <li><a href="{{ url_for('solicitud') }}">Mis solicitudes</a></li>
