@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #edeaea;
+    background-color: #BA181B;
     align-items: center;
 }
 
@@ -134,8 +134,6 @@ body {
     margin-top: 40px;
     transform: translateX(400px); 
 }
-
-
 
 h2 {
     text-align: center;
