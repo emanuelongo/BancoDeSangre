@@ -10,6 +10,7 @@
 
 body {
     background-color: #edeaea;
+    align-items: center;
 }
 
 /* Encabezado */
@@ -111,13 +112,18 @@ body {
     margin-left: 600px;
     color: #BA181B;
     margin-top: 20px;
+    align-items: center;
 }
 
 .main-content h1 {
     margin-left: 80px;
     color: #BA181B;
     margin-top: 5px;
+    justify-content: center;
 }
+
+
+
 
 /* Estilos del formulario */
 .solicitud-container {
@@ -127,10 +133,13 @@ body {
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
     width: 400px;
     max-width: 90%;
-    margin: 40px 2%;
+    margin: 90px;
+    margin-left: 550px;
+
+    
 }
 
-/* Título del formulario */
+
 h2 {
     text-align: center;
     color: #333;
