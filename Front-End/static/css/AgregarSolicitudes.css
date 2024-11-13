@@ -9,7 +9,8 @@
 }
 
 body {
-    background-color: #edeaea;
+    background-color: #BA181B;
+    align-items: center;
 }
 
 /* Encabezado */
@@ -111,26 +112,29 @@ body {
     margin-left: 600px;
     color: #BA181B;
     margin-top: 20px;
+    align-items: center;
 }
 
 .main-content h1 {
     margin-left: 80px;
     color: #BA181B;
     margin-top: 5px;
+    justify-content: center;
 }
+
 
 /* Estilos del formulario */
 .solicitud-container {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    width: 400px;
-    max-width: 90%;
-    margin: 40px 2%;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 40px;
+    transform: translateX(400px); 
 }
 
-/* Título del formulario */
 h2 {
     text-align: center;
     color: #333;
@@ -143,9 +147,11 @@ h2 {
 label {
     display: block;
     margin-bottom: 6px;
+    margin-left: 20px;
     font-weight: bold;
     color: #666;
     font-size: 15px;
+    align-items: center;
 }
 
 
@@ -161,9 +167,10 @@ input[type="number"],
 select,
 textarea {
     display: block;
-    width: 100%;
+    width: 90%;
     height: 45px;
     padding: 10px;
+    margin-left: 20px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
