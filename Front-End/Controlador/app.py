@@ -166,6 +166,12 @@ def campaña_donante():
 def solicitudes_donante():
     return render_template("CampañasDonante.html")
 
+@app.route('/deseo_donar', methods=['GET', 'POST'])
+def deseo_donar():
+    if request.method == 'POST':
+        pass
+    return render_template("DeseoDonar.html")
+
 
 
 

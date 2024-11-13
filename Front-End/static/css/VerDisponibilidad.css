@@ -9,7 +9,7 @@
 }
 
 body{
-    background-image: url("{{ url_for('static', filename='img/fondo.png') }}");
+    background-image:url(../img/fondo.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -126,7 +126,7 @@ body{
     padding:0;
 }
 .navbar .logo{
-    width: 15vw;
+    width: 19vw;
     object-fit: cover;
     overflow: hidden;
     
@@ -157,7 +157,7 @@ body{
     display: flex;
     color:#dd2222;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 1.6em;
     font-weight: 500;
     padding: 20px 20 px auto;
     white-space: nowrap;

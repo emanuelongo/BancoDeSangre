@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Donación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/DeseoDonar.css') }}">
+</head>
+<body>
+   <header class="header">
+    <div class="logo">
+       <img src="{{ url_for('static', filename='img/BancoSangre.jpeg') }}" alt="logo del sistema" >
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('campaña_donante') }}">Mis campañas</a></li>
+            <li><a href="{{ url_for('solicitudes_donante') }}">Mis solicitudes</a></li>
+        </ul>     
+    </nav>
+    <div class="perfil">
+        <img src="{{ url_for('static', filename='img/perfil.png') }}" alt="perfil administrador">
+        <p>Donante</p>
+    </div>
+   </header>
+   
+   <div class="form-container">
+       <form id="donationForm">
+           <!-- Etapa 1 -->
+           <div class="form-step active">
+               <h2>Etapa 1: Información Personal</h2>
+               <label>Nombre completo:</label>
+               <input type="text" name="nombre" required>
+
+               <label>Edad:</label>
+               <input type="number" name="edad" required min="18">
+
+               <label>Peso (kg):</label>
+               <input type="number" name="peso" min="50" required>
+
+               <label>Teléfono de Contacto:</label>
+               <input type="tel" name="telefono" required>
+
+               <label>Correo Electrónico:</label>
+               <input type="email" name="correo" required>
+
+               <label for="genero">Género:</label>
+               <select id="genero" name="genero" required>
+                   <option value="">Seleccione...</option>
+                   <option value="masculino">Masculino</option>
+                   <option value="femenino">Femenino</option>
+                   <option value="otro">Otro</option>
+               </select>
+
+               <label for="estatura">Estatura (cm):</label>
+               <input type="number" id="estatura" name="estatura" min="100" max="250" required>
+
+               <label for="estado_civil">Estado civil:</label>
+               <select id="estado_civil" name="estado_civil" required>
+                   <option value="">Seleccione...</option>
+                   <option value="soltero">Soltero</option>
+                   <option value="casado">Casado</option>
+                   <option value="divorciado">Divorciado</option>
+                   <option value="viudo">Viudo</option>
+               </select>
+
+               <label for="hijos">¿Tiene hijos?</label>
+               <select id="hijos" name="hijos" onchange="toggleHijosInput()" required>
+                   <option value="">Seleccione...</option>
+                   <option value="si">Sí</option>
+                   <option value="no">No</option>
+               </select>
+
+               <div id="cantidad_hijos_container" style="display: none;">
+                   <label for="cantidad_hijos">¿Cuántos hijos tiene?</label>
+                   <input type="number" id="cantidad_hijos" name="cantidad_hijos" min="1">
+               </div>
+               <button type="button" onclick="nextStep()">Siguiente</button>
+           </div>
+
+           <!-- Etapa 2 -->
+           <div class="form-step">
+               <h2>Etapa 2: Información Médica</h2>
+               <label for="tipo_sangre">Tipo de sangre:</label>
+               <select id="tipo_sangre" name="tipo_sangre" required>
+                   <option value="">Seleccione...</option>
+                   <option value="A+">A+</option>
+                   <option value="A-">A-</option>
+                   <option value="B+">B+</option>
+                   <option value="B-">B-</option>
+                   <option value="AB+">AB+</option>
+                   <option value="AB-">AB-</option>
+                   <option value="O+">O+</option>
+                   <option value="O-">O-</option>
+               </select>
+               <label>¿Tienes algún tatuaje reciente? (últimos 12 meses)</label>
+               <select name="tatuajes" required>
+                   <option value="">Selecciona...</option>
+                   <option value="si">Sí</option>
+                   <option value="no">No</option>
+               </select>
+               <label>¿Consumo de alcohol frecuente?</label>
+               <select name="alcohol" required>
+                   <option value="">Selecciona...</option>
+                   <option value="si">Sí</option>
+                   <option value="no">No</option>
+               </select>
+               <label for="drogas">¿Ha usado drogas recreativas alguna vez?</label>
+               <select id="drogas" name="drogas">
+                   <option value="">Seleccione...</option>
+                   <option value="si">Sí</option>
+                   <option value="no">No</option>
+               </select>
+               <label for="alergias">¿Tiene alguna alergia conocida?</label>
+               <input type="text" id="alergias" name="alergias">
+               <label for="anemia">¿Ha sido diagnosticado con anemia?</label>
+               <select id="anemia" name="anemia">
+                   <option value="">Seleccione...</option>
+                   <option value="si">Sí</option>
+                   <option value="no">No</option>
+               </select>
+               <label for="hipertension">¿Padece de hipertensión?</label>
+               <select id="hipertension" name="hipertension">
+                   <option value="">Seleccione...</option>
+                   <option value="si">Sí</option>
+                   <option value="no">No</option>
+               </select>
+               <button type="button" onclick="prevStep()">Anterior</button>
+               <button type="button" onclick="nextStep()">Siguiente</button>
+           </div>
+
+           <!-- Etapa 3 -->
+           <div class="form-step">
+               <h2>Etapa 3: Contactos de Emergencia</h2>
+               <label>Contacto de emergencia:</label>
+               <input type="text" name="contacto_emergencia" required>
+               <label>Teléfono de emergencia:</label>
+               <input type="tel" name="telefono_emergencia" required>
+               <button type="button" onclick="prevStep()">Anterior</button>
+               <button type="submit">Enviar</button>
+           </div>
+       </form>
+   </div>
+
+   <script src="{{ url_for('static', filename='js/form-navigation.js') }}"></script>
+</body>
+</html>

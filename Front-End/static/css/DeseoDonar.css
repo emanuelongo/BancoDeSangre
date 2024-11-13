@@ -92,90 +92,62 @@ a {
     width: auto;
 }
 
-.main-content {
-    display: flex;
-    flex-direction: column; 
-    justify-content: flex-start;
-    margin-left: 10px;
+
+.form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
 }
 
-.contenido h3 {
-    justify-content: center;
-    display: flex;
-    color: #000000; 
-    margin-bottom: 30px; 
-    white-space: nowrap; 
+.form-step {
+    display: none;
 }
 
-.contenido p {
-    justify-content: center;
-    display: flex;
+.form-step.active {
+    display: block;
 }
 
-h1 {
-    text-align: left;
-    color: #ffffff; 
-    margin-left: 20px;
-    margin-bottom: 30px; 
-    white-space: nowrap; 
+h2 {
+    color: #bf1e2e;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 30px;
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+.form-container .question {
+    margin-bottom: 20px; /* Espacio entre preguntas */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+select {
     width: 100%;
-    border-radius: 10px;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.campañas {
-    width: 100%;
-    max-width: 350px;
-    min-height: 350px; 
-    margin: 20px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-}
-
-
-.campañas:hover {
-    background-color: #bfbfbf;
-    transform: scale(1.05);
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.campañas:active {
-    transform: scale(0.95);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.rojo {
-    color: red;
-}
-
-.negro {
-    color: black;
-}
-
-.btn-deseo-donar {
-    background-color: #BA181B;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
+button {
+    background-color: #bf1e2e;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
     margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.btn-deseo-donar:hover {
-    background-color: #a11617;
+button:hover {
+    background-color: #a11d29;
 }
